@@ -1,7 +1,7 @@
 <h1>学習タイマー</h1>
 
 <% if Timer.total_duration > 0 %>
-  <p>累計学習時間: <%= Timer.total_duration %> 時間</p>
+  <p>累計学習時間: <%= Timer.formatted_total_duration %></p>
   <p>スタンプ数: <%= Timer.stamps %></p>
 <% else %>
   <p>まだ学習時間の記録がありません。</p>
