@@ -1,7 +1,7 @@
 <h1>学習タイマーの結果</h1>
 
 <% if @timer.end_time.present? %>
-  <p>今回の学習時間: <%= @timer.duration %> 時間</p>
+  <p>今回の学習時間: <%= @timer.duration %></p>
 <% else %>
   <p>学習中です。終了するには、終了ボタンを押してください。</p>
 <% end %>
