@@ -6,7 +6,8 @@
   <p>学習中です。終了するには、終了ボタンを押してください。</p>
 <% end %>
 
-<p>累計学習時間: <%= Timer.formatted_total_duration %></p>
+
+<p>累計学習時間: <span id="total-duration"><%= Timer.formatted_total_duration %></span></p> <!-- カウントダウンのJavaScriptコード-->
 <p>スタンプ数: <%= Timer.stamps %></p>
 
 <% if @timer.end_time.nil? %>
