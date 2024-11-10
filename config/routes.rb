@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     end
     collection do
       get '学習', to: 'timers#study', as: 'study'
+      delete 'reset', to: 'timers#reset', as: 'reset' # 累計学習時間とスタンプ数をリセットする
     end
   end
 

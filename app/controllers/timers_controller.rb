@@ -38,4 +38,10 @@ class TimersController < ApplicationController
     @timer.update(end_time: Time.current)
     redirect_to new_timer_path
   end
+
+  # 累計学習時間とスタンプ数をリセットするアクション
+  def reset
+    Timer.delete_all
+    redirect_to new_timer_path, notice: '累計学習時間とスタンプ数がリセットされました。'
+  end
 end

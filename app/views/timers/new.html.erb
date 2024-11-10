@@ -14,3 +14,5 @@
 <% else %>
   <p>まだ学習時間の記録がありません。</p>
 <% end %>
+
+<%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_timers_path, method: :delete, data: { confirm: "本当にリセットしますか？" } %>
