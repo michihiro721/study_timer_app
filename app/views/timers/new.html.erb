@@ -1,7 +1,7 @@
 <h1>学習タイマー</h1>
 
 <%= form_with model: @timer, local: true do |form| %>
-  <%= form.submit "タイマー開始" %>
+  <%= form.submit "学習開始" %>
 <% end %>
 
 <% if @last_timer && @last_timer.end_time.present? %>
@@ -15,4 +15,4 @@
   <p>まだ学習時間の記録がありません。</p>
 <% end %>
 
-<%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_timers_path, method: :delete, data: { confirm: "本当にリセットしますか？" } %>
+<%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_timers_path, method: :delete, id: 'reset-button' %>
