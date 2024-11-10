@@ -9,8 +9,6 @@
 <p>累計学習時間: <%= Timer.formatted_total_duration %></p>
 <p>スタンプ数: <%= Timer.stamps %></p>
 
-<%= link_to "ホームに戻る", new_timer_path %>
-
 <% if @timer.end_time.nil? %>
   <%= button_to "タイマー終了", stop_timer_path(@timer), method: :patch %>
 <% end %>

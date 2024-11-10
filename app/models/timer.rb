@@ -1,14 +1,10 @@
 class Timer < ApplicationRecord
   # 学習時間をフォーマットして返すメソッド
   def duration
-    if end_time && start_time
-      total_seconds = (end_time - start_time).to_i
-      hours = total_seconds / 3600
-      minutes = (total_seconds % 3600) / 60
-      seconds = total_seconds % 60
-      "#{hours}時間#{minutes}分#{seconds}秒"
+    if end_time.present?
+      Time.at(end_time - start_time).utc.strftime("%H:%M:%S")
     else
-      "0時間0分0秒"
+      "タイマーが終了していません"
     end
   end
 
@@ -19,11 +15,8 @@ class Timer < ApplicationRecord
 
   # 累計学習時間を「xx時間xx分xx秒」の形式で返すメソッド
   def self.formatted_total_duration
-    total_seconds = (total_duration * 3600).to_i
-    hours = total_seconds / 3600
-    minutes = (total_seconds % 3600) / 60
-    seconds = total_seconds % 60
-    "#{hours}時間#{minutes}分#{seconds}秒"
+    total_duration = all.sum { |timer| timer.end_time && timer.start_time ? timer.end_time - timer.start_time : 0 }
+    Time.at(total_duration).utc.strftime("%H:%M:%S")
   end
 
   # durationを時間単位の数値で返すヘルパーメソッド
@@ -37,6 +30,7 @@ class Timer < ApplicationRecord
 
   # 累計時間に応じたスタンプ数を計算するクラスメソッド
   def self.stamps
-    (total_duration / 1).floor
+    total_hours = all.sum { |timer| timer.end_time && timer.start_time ? (timer.end_time - timer.start_time) / 3600.0 : 0 }
+    total_hours.floor
   end
 end

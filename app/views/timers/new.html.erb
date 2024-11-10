@@ -1,12 +1,16 @@
 <h1>学習タイマー</h1>
 
+<%= form_with model: @timer, local: true do |form| %>
+  <%= form.submit "タイマー開始" %>
+<% end %>
+
+<% if @last_timer && @last_timer.end_time.present? %>
+  <p>今回の学習時間: <%= @last_timer.duration %></p>
+<% end %>
+
 <% if Timer.total_duration > 0 %>
   <p>累計学習時間: <%= Timer.formatted_total_duration %></p>
   <p>スタンプ数: <%= Timer.stamps %></p>
 <% else %>
   <p>まだ学習時間の記録がありません。</p>
-<% end %>
-
-<%= form_with model: @timer, url: timers_path, method: :post do %>
-  <%= submit_tag "学習開始" %>
 <% end %>
