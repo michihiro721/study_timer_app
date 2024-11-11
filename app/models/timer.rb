@@ -37,7 +37,7 @@ class Timer < ApplicationRecord
 
   # 累計時間に応じたスタンプ数を計算するクラスメソッド
   def self.stamps
-    total_hours = all.sum { |timer| timer.end_time && timer.start_time ? (timer.end_time - timer.start_time) / 3600.0 : 0 }
-    total_hours.floor
+    total_seconds = total_duration
+    (total_seconds / 3600).floor # 10秒ごとに1スタンプ
   end
 end

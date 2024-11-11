@@ -2,6 +2,7 @@ class TimersController < ApplicationController
   def new
     @timer = Timer.new
     @last_timer = Timer.order(created_at: :desc).first
+    @total_duration = Timer.total_duration
   end
 
   def create

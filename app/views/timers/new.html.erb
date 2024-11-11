@@ -16,3 +16,21 @@
 <% end %>
 
 <%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_timers_path, method: :delete, id: 'reset-button' %>
+
+<!-- スタンプの表を表示 -->
+<table>
+  <% 5.times do |row| %>
+    <tr>
+      <% 10.times do |col| %>
+        <% index = row * 10 + col %>
+        <td>
+          <% if index < Timer.stamps %>
+            <span>🍀</span> <!-- スタンプが押された状態 -->
+          <% else %>
+            <span>⬜️</span> <!-- スタンプが押されていない状態 -->
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
