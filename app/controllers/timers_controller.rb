@@ -3,6 +3,7 @@ class TimersController < ApplicationController
     @timer = Timer.new
     @last_timer = Timer.order(created_at: :desc).first
     @total_duration = Timer.total_duration
+    @cells = params[:cells].to_i > 0 ? params[:cells].to_i : 50
   end
 
   def create

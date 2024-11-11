@@ -38,6 +38,6 @@ class Timer < ApplicationRecord
   # 累計時間に応じたスタンプ数を計算するクラスメソッド
   def self.stamps
     total_seconds = total_duration
-    (total_seconds / 3600).floor # 10秒ごとに1スタンプ
+    (total_seconds / 1).floor # 10秒ごとに1スタンプ
   end
 end

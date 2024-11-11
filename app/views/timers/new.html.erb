@@ -1,4 +1,4 @@
-<h1>学習タイマー</h1>
+<h1>感謝の学習タイマー</h1>
 
 <%= form_with model: @timer, local: true do |form| %>
   <%= form.submit "学習開始" %>
@@ -10,24 +10,38 @@
 
 <% if Timer.total_duration > 0 %>
   <p>累計学習時間: <%= Timer.formatted_total_duration %></p>
-  <p>スタンプ数: <%= Timer.stamps %></p>
+  <p>スタンプ数（1時間の学習で1カウント）: <%= Timer.stamps %></p>
 <% else %>
   <p>まだ学習時間の記録がありません。</p>
 <% end %>
 
 <%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_timers_path, method: :delete, id: 'reset-button' %>
 
+<!-- マスの数を入力するフォーム -->
+<%= form_with url: new_timer_path, method: :get, local: true do %>
+  <div>
+    <label for="cells">マスの数（任意で設定可能）:</label>
+    <input type="number" id="cells" name="cells" value="<%= params[:cells] || 50 %>">
+  </div>
+  <%= submit_tag "更新" %>
+<% end %>
+
 <!-- スタンプの表を表示 -->
 <table>
-  <% 5.times do |row| %>
+  <p>1スタンプ毎に1つのクローバーが追加されます</p>
+  <% cells = (params[:cells] || 50).to_i %>
+  <% rows = (cells / 10.0).ceil %>
+  <% rows.times do |row| %>
     <tr>
       <% 10.times do |col| %>
         <% index = row * 10 + col %>
         <td>
-          <% if index < Timer.stamps %>
-            <span>🍀</span> <!-- スタンプが押された状態 -->
-          <% else %>
-            <span>⬜️</span> <!-- スタンプが押されていない状態 -->
+          <% if index < cells %>
+            <% if index < Timer.stamps %>
+              <span>🍀</span> <!-- スタンプが押された状態 -->
+            <% else %>
+              <span>⬜️</span> <!-- スタンプが押されていない状態 -->
+            <% end %>
           <% end %>
         </td>
       <% end %>
