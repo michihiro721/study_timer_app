@@ -3,13 +3,33 @@
 <% if @timer.end_time.present? %>
   <p>今回の学習時間: <%= @timer.duration %></p>
 <% else %>
-  <p>学習中です。終了するには、終了ボタンを押してください。</p>
+  <p>学習中です。終了するには、「タイマー終了」ボタンを押してください。</p>
+  <p>学習経過時間: <span id="elapsed-time">0時間0分0秒</span></p>
 <% end %>
 
-
-<p>累計学習時間: <span id="total-duration"><%= Timer.formatted_total_duration %></span></p> <!-- カウントダウンのJavaScriptコード-->
+<p>累計学習時間: <span id="total-duration"><%= Timer.formatted_total_duration %></span></p>
 <p>スタンプ数: <%= Timer.stamps %></p>
 
 <% if @timer.end_time.nil? %>
   <%= button_to "タイマー終了", stop_timer_path(@timer), method: :patch %>
 <% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var startTime = new Date();
+    var elapsedTimeElement = document.getElementById('elapsed-time');
+
+    function updateElapsedTime() {
+      var now = new Date();
+      var elapsedTime = Math.floor((now - startTime) / 1000);
+
+      var hours = Math.floor(elapsedTime / 3600);
+      var minutes = Math.floor((elapsedTime % 3600) / 60);
+      var seconds = elapsedTime % 60;
+
+      elapsedTimeElement.textContent = hours + '時間' + minutes + '分' + seconds + '秒';
+    }
+
+    setInterval(updateElapsedTime, 1000);
+  });
+</script>
