@@ -81,6 +81,13 @@ td {
   margin: 0 auto;
 }
 
+.info-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+
 .start-button {
   display: inline-block;
   padding: 15px 30px;
