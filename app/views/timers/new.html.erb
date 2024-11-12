@@ -22,14 +22,14 @@
   <!-- <p>累計学習時間: <%= Timer.formatted_total_duration %></p> -->
   <!-- <p>スタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p> -->
 <% else %>
-  <p>学習を再開してスタンプを集めよう！</p>
+  <!--<p>学習を再開してスタンプを集めよう！</p> -->
 <% end %>
 
 <!-- 独立した累計学習時間を表示 -->
-<p>今までの累計学習時間: <%= Time.at(@independent_total_duration || 0).utc.strftime("%H時間%M分%S秒") %></p>
+<p>累計学習時間: <%= Time.at(@independent_total_duration || 0).utc.strftime("%H時間%M分%S秒") %></p>
 <!--<%= button_to "独立した累計学習時間をリセット", reset_independent_total_duration_timers_path, method: :delete, id: 'reset-independent-total-duration-button' %> -->
 
-<%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button' %>
+<!-- <%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button' %> -->
 
 <!-- マスの数を入力するフォーム -->
 <!--<%= form_with url: new_timer_path, method: :get, local: true do %>
