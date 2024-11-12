@@ -6,6 +6,7 @@
     <p>🎉おめでとうございます🎉<br>感謝のスタンプが満タンになりました！</p>
     <%= image_tag 'cute_image.png', alt: '可愛いイラスト' %>
     <p>大切な人に感謝の気持ちを伝えましょう！！</p>
+    <%= button_to "スタンプをリセットして学習再開", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button' %>
   </div>
 <% end %>
 
@@ -19,7 +20,7 @@
 
 <% if Timer.total_duration > 0 %>
   <p>累計学習時間: <%= Timer.formatted_total_duration %></p>
-  <p>スタンプ数（1時間の学習で1カウント）: <%= Timer.stamps %></p>
+  <p>スタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p>
 <% else %>
   <p>まだ学習時間の記録がありません。</p>
 <% end %>
@@ -27,7 +28,7 @@
 <%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button' %>
 
 <!-- マスの数を入力するフォーム -->
-<%= form_with url: new_timer_path, method: :get, local: true do %>
+<!--<%= form_with url: new_timer_path, method: :get, local: true do %>
   <div>
     <label for="cells">マスの数（任意で設定可能）:</label>
     <input type="number" id="cells" name="cells" value="<%= params[:cells] || 50 %>">
@@ -59,5 +60,5 @@
 </table>
 
 <!-- 独立した累計学習時間を表示 -->
-<p>独立した累計学習時間: <%= Time.at(@independent_total_duration || 0).utc.strftime("%H時間%M分%S秒") %></p>
-<%= button_to "独立した累計学習時間をリセット", reset_independent_total_duration_timers_path, method: :delete, id: 'reset-independent-total-duration-button' %>
+<p>今までの累計学習時間: <%= Time.at(@independent_total_duration || 0).utc.strftime("%H時間%M分%S秒") %></p>
+<!--<%= button_to "独立した累計学習時間をリセット", reset_independent_total_duration_timers_path, method: :delete, id: 'reset-independent-total-duration-button' %>
