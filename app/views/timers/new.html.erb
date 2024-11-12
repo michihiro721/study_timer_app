@@ -10,8 +10,8 @@
       <%= button_to "スタンプをリセットして学習再開", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button' %>
     </div>
   <% else %>
-    <%= form_with model: @timer, local: true do |form| %>
-      <%= form.submit "学習開始" %>
+    <%= form_with model: @timer, local: true, html: { class: 'start-form' } do |form| %>
+      <%= form.submit "学習開始", class: 'start-button' %>
     <% end %>
   <% end %>
 

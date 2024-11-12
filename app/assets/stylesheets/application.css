@@ -80,3 +80,29 @@ td {
 .center-content table {
   margin: 0 auto;
 }
+
+.start-button {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: #0056b3;
+}
+
+.start-button:active {
+  background-color: #004085;
+}
+
+.start-form {
+  margin-top: 20px;
+}
