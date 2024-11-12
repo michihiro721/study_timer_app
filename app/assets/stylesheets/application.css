@@ -23,7 +23,7 @@ td {
   width: 30px !important;
   height: 30px !important;
   text-align: center !important;
-  border: 10px solid #08ef08 !important;
+  border: 10px solid #07ec1e !important;
 }
 
 .congratulations {
@@ -94,7 +94,7 @@ td {
   font-size: 20px;
   font-weight: bold;
   color: #fff;
-  background-color: #007bff;
+  background-color: #3F95FF;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -103,11 +103,11 @@ td {
 }
 
 .start-button:hover {
-  background-color: #0056b3;
+  background-color: #fc1010;
 }
 
 .start-button:active {
-  background-color: #004085;
+  background-color: #3659e5;
 }
 
 .start-form {
