@@ -20,9 +20,9 @@
 
 <% if Timer.total_duration > 0 %>
   <p>累計学習時間: <%= Timer.formatted_total_duration %></p>
-  <p>スタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p>
+  <!-- <p>スタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p> -->
 <% else %>
-  <p>まだ学習時間の記録がありません。</p>
+  <p>学習を再開してスタンプを集めよう！</p>
 <% end %>
 
 <%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button' %>
@@ -38,7 +38,8 @@
 
 <!-- スタンプの表を表示 -->
 <table>
-  <p>1スタンプ毎に1つのクローバーが追加されます</p>
+  <!--<p>1スタンプ毎に1つのクローバーが追加されます</p> -->
+  <p>現在のスタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p>
   <% cells = (params[:cells] || 30).to_i %>
   <% rows = (cells / 10.0).ceil %>
   <% rows.times do |row| %>
