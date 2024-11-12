@@ -3,7 +3,10 @@ class TimersController < ApplicationController
     @timer = Timer.new
     @last_timer = Timer.order(created_at: :desc).first
     @total_duration = Timer.total_duration
+    @total_stamps = (session[:total_duration] || 0) / 3600
+    @total_stamps ||= 0
     @cells = params[:cells].to_i > 0 ? params[:cells].to_i : 50
+    @independent_total_duration = session[:independent_total_duration] || 0
   end
 
   def create
@@ -38,12 +41,28 @@ class TimersController < ApplicationController
   def stop
     @timer = Timer.find(params[:id])
     @timer.update(end_time: Time.current)
+    # 累計学習時間を更新
+    session[:total_duration] = (session[:total_duration] || 0) + (@timer.end_time - @timer.start_time)
+    session[:independent_total_duration] = (session[:independent_total_duration] || 0) + (@timer.end_time - @timer.start_time)
     redirect_to new_timer_path
   end
 
-  # 累計学習時間とスタンプ数をリセットするアクション
-  def reset
+  # 累計学習時間をリセットするアクション
+  def reset_total_duration
     Timer.delete_all
-    redirect_to new_timer_path, notice: '累計学習時間とスタンプ数がリセットされました。'
+    session[:total_duration] = 0
+    redirect_to new_timer_path, notice: '累計学習時間がリセットされました。'
+  end
+
+  # スタンプ数をリセットするアクション
+  def reset_stamps
+    session[:total_duration] = 0
+    redirect_to new_timer_path, notice: 'スタンプ数がリセットされました。'
+  end
+
+  # 独立した累計学習時間をリセットするアクション
+  def reset_independent_total_duration
+    session[:independent_total_duration] = 0
+    redirect_to new_timer_path, notice: '独立した累計学習時間がリセットされました。'
   end
 end

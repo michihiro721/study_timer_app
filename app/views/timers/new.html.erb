@@ -24,7 +24,7 @@
   <p>まだ学習時間の記録がありません。</p>
 <% end %>
 
-<%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_timers_path, method: :delete, id: 'reset-button' %>
+<%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button' %>
 
 <!-- マスの数を入力するフォーム -->
 <%= form_with url: new_timer_path, method: :get, local: true do %>
