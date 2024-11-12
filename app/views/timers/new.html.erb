@@ -1,7 +1,7 @@
 <h1>感謝の学習タイマー</h1>
 
 <!-- スタンプが満タンになったらメッセージとイラストを表示 -->
-<% if Timer.stamps >= 50 %>
+<% if Timer.stamps >= 30 %>
   <div class="congratulations">
     <p>🎉おめでとうございます🎉<br>感謝のスタンプが満タンになりました！</p>
     <%= image_tag 'cute_image.png', alt: '可愛いイラスト' %>
@@ -39,7 +39,7 @@
 <!-- スタンプの表を表示 -->
 <table>
   <p>1スタンプ毎に1つのクローバーが追加されます</p>
-  <% cells = (params[:cells] || 50).to_i %>
+  <% cells = (params[:cells] || 30).to_i %>
   <% rows = (cells / 10.0).ceil %>
   <% rows.times do |row| %>
     <tr>

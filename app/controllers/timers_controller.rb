@@ -5,7 +5,7 @@ class TimersController < ApplicationController
     @total_duration = Timer.total_duration
     @total_stamps = (session[:total_duration] || 0) / 3600
     @total_stamps ||= 0
-    @cells = params[:cells].to_i > 0 ? params[:cells].to_i : 50
+    @cells = params[:cells].to_i > 0 ? params[:cells].to_i : 30
     @independent_total_duration = session[:independent_total_duration] || 0
   end
 
