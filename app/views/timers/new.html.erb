@@ -11,7 +11,7 @@
     </div>
   <% else %>
     <%= form_with model: @timer, local: true, html: { class: 'start-form' } do |form| %>
-      <%= form.submit "学習開始", class: 'start-button' %>
+      <%= form.submit "🔥学習開始🔥", class: 'start-button' %>
     <% end %>
   <% end %>
 
@@ -23,7 +23,7 @@
     <!-- <p class="info-text">累計学習時間: <%= Timer.formatted_total_duration %></p> -->
     <!-- <p class="info-text">現在のスタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p> -->
   <% else %>
-    <p class="info-text">まだ学習時間の記録がありません。</p>
+    <!-- <p class="info-text">学習を再開しましょう🔥</p> -->
   <% end %>
 
   <!-- 独立した累計学習時間を表示 -->
