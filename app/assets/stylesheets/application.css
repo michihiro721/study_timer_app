@@ -25,3 +25,20 @@ td {
   text-align: center !important;
   border: 10px solid #08ef08 !important;
 }
+
+.congratulations {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.congratulations p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff69b4; /* ピンク色 */
+}
+
+.congratulations img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}

@@ -48,3 +48,11 @@
     </tr>
   <% end %>
 </table>
+
+<!-- スタンプが満タンになったらメッセージとイラストを表示 -->
+<% if Timer.stamps >= 50 %>
+  <div class="congratulations">
+    <p>大切な人に感謝を伝えましょう！</p>
+    <%= image_tag 'cute_image.png', alt: '可愛いイラスト' %>
+  </div>
+<% end %>
