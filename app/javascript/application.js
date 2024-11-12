@@ -22,3 +22,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.querySelector('.congratulations')) {
+    // クラッカーのアニメーションを追加
+    for (let i = 0; i < 100; i++) {
+      createConfetti();
+    }
+  }
+
+  function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = `${Math.random() * 100}%`;
+    confetti.style.backgroundColor = getRandomColor();
+    confetti.style.animationDelay = `${Math.random() * 2}s`;
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+      confetti.remove();
+    }, 3000);
+  }
+
+  function getRandomColor() {
+    const colors = ['#ff69b4', '#ff4500', '#ffd700', '#32cd32', '#1e90ff', '#8a2be2'];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+});
