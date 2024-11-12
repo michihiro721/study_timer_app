@@ -57,3 +57,7 @@
     </tr>
   <% end %>
 </table>
+
+<!-- 独立した累計学習時間を表示 -->
+<p>独立した累計学習時間: <%= Time.at(@independent_total_duration || 0).utc.strftime("%H時間%M分%S秒") %></p>
+<%= button_to "独立した累計学習時間をリセット", reset_independent_total_duration_timers_path, method: :delete, id: 'reset-independent-total-duration-button' %>
