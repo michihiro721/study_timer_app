@@ -8,10 +8,10 @@
     <p>大切な人に感謝の気持ちを伝えましょう！！</p>
     <%= button_to "スタンプをリセットして学習再開", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button' %>
   </div>
-<% end %>
-
-<%= form_with model: @timer, local: true do |form| %>
-  <%= form.submit "学習開始" %>
+<% else %>
+  <%= form_with model: @timer, local: true do |form| %>
+    <%= form.submit "学習開始" %>
+  <% end %>
 <% end %>
 
 <% if @last_timer && @last_timer.end_time.present? %>
