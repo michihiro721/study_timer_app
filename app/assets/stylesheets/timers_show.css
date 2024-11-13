@@ -22,7 +22,7 @@
 }
 
 .elapsed-time {
-  font-size: 80px;
+  font-size: 100px;
   color: #FFFFFF;
   text-shadow: 2px 2px 4px #000000;
   display: inline-block;
@@ -68,13 +68,14 @@
   z-index: -1; /* 他の要素の背面に表示 */
 }
 
+/* 雨の滴のスタイル */
 .rain-drop {
-  position: absolute;
-  top: -10px;
-  width: 2px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.6);
-  animation: fall linear infinite;
+  position: absolute; /* 絶対位置 */
+  top: -10px; /* 初期位置を上に設定 */
+  width: 2px; /* 幅を2pxに設定 */
+  height: 10px; /* 高さを10pxに設定 */
+  background: rgba(255, 255, 255, 0.6); /* 半透明の白色 */
+  animation: fall linear infinite; /* 無限に落ちるアニメーション */
 }
 
 @keyframes fall {

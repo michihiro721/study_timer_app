@@ -87,8 +87,8 @@
   padding: 10px 20px;
   font-size: 18px;
   font-weight: bold;
-  color: #ffffff; /* 白色の文字色 */
-  background-color: #006400; /* 濃い緑色の背景 */
+  color: #333333; /* ダークグレーの文字色 */
+  background-color: #ADFF2F; /* 黄緑色の背景 */
   border: none;
   border-radius: 5px;
   cursor: pointer;
