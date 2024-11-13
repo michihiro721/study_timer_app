@@ -8,7 +8,7 @@
     <p>今回の学習時間: <%= @timer.duration %></p>
   <% else %>
     <!-- <p>学習が終了したら<br>「タイマー終了」ボタンを押してください。</p> -->
-    <p class="elapsed-time"><span id="elapsed-time">0時間0分0秒</span></p>
+    <p class="elapsed-time"><span id="elapsed-time">0秒</span></p>
     <br>
   <% end %>
 
@@ -41,7 +41,16 @@
       elapsedTimeElement.textContent = formattedTime;
 
       // タイトルを更新
-      document.title = formattedTime + ' | 感謝の学習タイマー';
+      var titleTime = '';
+      if (hours > 0) {
+        titleTime += hours + '時間';
+      }
+      if (minutes > 0 || hours > 0) {
+        titleTime += minutes + '分';
+      }
+      titleTime += seconds + '秒';
+
+      document.title = titleTime + ' | 感謝の学習タイマー';
     }
 
     setInterval(updateElapsedTime, 1000);
