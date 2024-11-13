@@ -94,15 +94,17 @@
   border-radius: 5px;
   text-align: center;
   z-index: 1000; /* 他の要素の前面に表示 */
+  cursor: pointer; /* カーソルをポインタに変更 */
 }
 
 .volume-control label {
   color: #00ccff; /* 雨に似合う青色 */
-  font-size: 14px;
+  font-size: 30px;
   margin-right: 10px;
 }
 
 #volume-slider {
   width: 150px;
+  display: none; /* 初期状態で非表示 */
 }
 
