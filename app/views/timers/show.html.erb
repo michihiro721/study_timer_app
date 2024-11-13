@@ -1,14 +1,14 @@
 <%= stylesheet_link_tag 'timers_show', media: 'all' %>
 
 <div class="study-content">
-  <h1>学習中</h1>
+  <h1 class="studying">学習中</h1>
   <br>
 
   <% if @timer.end_time.present? %>
     <p>今回の学習時間: <%= @timer.duration %></p>
   <% else %>
     <!-- <p>学習が終了したら<br>「タイマー終了」ボタンを押してください。</p> -->
-    <p>学習経過時間: <span id="elapsed-time">0時間0分0秒</span></p>
+    <p class="elapsed-time"><span id="elapsed-time">0時間0分0秒</span></p>
     <br>
   <% end %>
 
@@ -16,7 +16,7 @@
   <!--<p>スタンプ数: <%= Timer.stamps %></p> -->
 
   <% if @timer.end_time.nil? %>
-    <%= button_to "学習終了", stop_timer_path(@timer), method: :patch %>
+    <%= button_to "学習終了", stop_timer_path(@timer), method: :patch, class: "stop-timer-button" %>
     <br>
   <% end %>
 </div>

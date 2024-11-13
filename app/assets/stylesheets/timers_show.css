@@ -10,3 +10,49 @@
   display: block;
   margin-bottom: 10px; /* 各要素の間に余白を追加 */
 }
+
+.studying {
+  font-size: 40px; /* フォントサイズを大きくしました */
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000;
+  border-radius: 8px; /* 角を丸くする */
+  margin: 0 auto; /* 文字の位置をセンターに */
+  text-align: center; /* テキストをセンターに */
+}
+
+.elapsed-time {
+  font-size: 80px;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px #000000;
+  display: inline-block;
+  margin-top: 1px; /* 上方向の余白を小さくする */
+}
+
+.stop-timer-button {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #fc1010;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.stop-timer-button {
+  background-color: #3F95FF; /* ホバーされる前は青色 */
+}
+
+.stop-timer-button:hover {
+  background-color: #ff0000; /* ホバーされたら赤色 */
+  transform: scale(1.05);
+}
+
+.stop-timer-button:active {
+  background-color: #cc0000;
+  transform: scale(0.95);
+}
