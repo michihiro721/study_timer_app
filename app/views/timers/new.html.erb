@@ -47,7 +47,7 @@
   <% end %>
 
   <!-- スタンプの表を表示 -->
-  <table>
+  <table style="background-color: white;">
     <!--<p>1スタンプ毎に1つのクローバーが追加されます</p> -->
     <p class="large-text">現在のスタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p>
     <% cells = (params[:cells] || 30).to_i %>
