@@ -18,18 +18,18 @@
   <% end %>
 
   <% if @last_timer && @last_timer.end_time.present? %>
-    <p class="info-text">今回の学習時間: <%= @last_timer.duration %></p>
+    <p class="large-text">今回の学習時間: <%= @last_timer.duration %></p>
   <% end %>
 
   <% if Timer.total_duration > 0 %>
-    <!-- <p class="info-text">累計学習時間: <%= Timer.formatted_total_duration %></p> -->
-    <!-- <p class="info-text">現在のスタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p> -->
+    <!--<p class="info-text large-text">累計学習時間: <%= Timer.formatted_total_duration %></p> -->
+    <!--<p class="info-text large-text">現在のスタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p> -->
   <% else %>
-    <!-- <p class="info-text">学習を再開しましょう🔥</p> -->
+    <!--<p class="info-text large-text">まだ学習時間の記録がありません。</p> -->
   <% end %>
 
   <!-- 独立した累計学習時間を表示 -->
-  <p class="info-text">累計学習時間: <%= Time.at(@independent_total_duration || 0).utc.strftime("%H時間%M分%S秒") %></p>
+  <p class="large-text">累計学習時間: <%= Time.at(@independent_total_duration || 0).utc.strftime("%H時間%M分%S秒") %></p>
   <!--<%= button_to "独立した累計学習時間をリセット", reset_independent_total_duration_timers_path, method: :delete, id: 'reset-independent-total-duration-button' %> -->
 
   <!-- <%= button_to "「累計学習時間」と「スタンプ数をリセット」", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button' %> -->
@@ -46,7 +46,7 @@
   <!-- スタンプの表を表示 -->
   <table>
     <!--<p>1スタンプ毎に1つのクローバーが追加されます</p> -->
-    <p class="info-text">現在のスタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p>
+    <p class="large-text">現在のスタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p>
     <% cells = (params[:cells] || 30).to_i %>
     <% rows = (cells / 10.0).ceil %>
     <% rows.times do |row| %>
