@@ -46,6 +46,7 @@ td {
   font-weight: bold;
   color: #FFA500; /* オレンジ色 */
   animation: fadeIn 2s ease-in-out, scaleUp 2s ease-in-out;
+  text-shadow: 2px 2px 4px #000000; /* 文字に影を追加 */
 }
 
 .congratulations img {
