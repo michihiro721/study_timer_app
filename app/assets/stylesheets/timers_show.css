@@ -86,11 +86,23 @@
 
 /* 音量調節用のスライダーのスタイル */
 .volume-control {
-  margin-top: 20px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+  padding: 10px;
+  border-radius: 5px;
   text-align: center;
+  z-index: 1000; /* 他の要素の前面に表示 */
+}
+
+.volume-control label {
+  color: #00ccff; /* 雨に似合う青色 */
+  font-size: 14px;
+  margin-right: 10px;
 }
 
 #volume-slider {
-  width: 80%;
-  max-width: 300px;
+  width: 150px;
 }
+
