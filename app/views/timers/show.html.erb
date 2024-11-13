@@ -24,10 +24,17 @@
 <!-- 雨のエフェクトを表示するための要素 -->
 <div id="rain-container"></div>
 
+<!-- 雨音の音声要素 -->
+<audio id="rain-sound" loop>
+  <source src="<%= asset_path 'rain-sound.mp3' %>" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var startTime = new Date();
     var elapsedTimeElement = document.getElementById('elapsed-time');
+    var rainSound = document.getElementById('rain-sound');
 
     function updateElapsedTime() {
       var now = new Date();
@@ -69,5 +76,16 @@
     };
 
     setInterval(createRainDrop, 100);
+
+    // 雨音をシームレスにループ再生
+    rainSound.addEventListener('timeupdate', function() {
+      var buffer = 0.44; // 途切れを防ぐためのバッファ時間（秒）
+      if (rainSound.currentTime > rainSound.duration - buffer) {
+        rainSound.currentTime = 0;
+        rainSound.play();
+      }
+    });
+
+    rainSound.play();
   });
 </script>
