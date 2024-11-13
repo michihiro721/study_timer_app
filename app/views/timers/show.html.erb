@@ -46,8 +46,16 @@
 
       var formattedTime = hours + '時間' + minutes + '分' + seconds + '秒';
       elapsedTimeElement.textContent = formattedTime;
+    }
 
-      // タイトルを更新
+    function updateTitleTime() {
+      var now = new Date();
+      var elapsedTime = Math.floor((now - startTime) / 1000);
+
+      var hours = Math.floor(elapsedTime / 3600);
+      var minutes = Math.floor((elapsedTime % 3600) / 60);
+      var seconds = elapsedTime % 60;
+
       var titleTime = '';
       if (hours > 0) {
         titleTime += hours + '時間';
@@ -60,7 +68,11 @@
       document.title = titleTime + ' | 感謝の学習タイマー';
     }
 
+    // 1秒ごとに経過時間を更新
     setInterval(updateElapsedTime, 1000);
+
+    // 10秒ごとにタイトルを更新
+    setInterval(updateTitleTime, 10000); // 10秒ごとに更新ここで変更可能
 
     // 雨のエフェクトを作成するスクリプト
     const rainContainer = document.getElementById('rain-container');
