@@ -59,7 +59,16 @@
 }
 
 .margin-top {
-  margin-top: 30px; /* 「学習開始」ボタンと「今回の学習時間」の間の距離を調整 */
+  margin-top: 20px !important; /* 「学習開始」ボタンと「今回の学習時間」の間の距離を調整 */
   font-size: 40px; /* 文字の大きさを調整 */
-  color: #ff331c;  /* 文字の色を調整 */
+  color: #00008B; /* 濃い青色 */
+}
+
+.total-time {
+  margin-top: 20px !important; /* 「今回の学習時間」の上部の余白を調整 */
+}
+
+.header-title {
+  font-size: 40px; /* 文字の大きさを調整 */
+  color: #FF69B4; /* ピンク色 */
 }

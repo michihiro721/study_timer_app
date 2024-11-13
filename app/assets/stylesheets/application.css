@@ -44,7 +44,7 @@ td {
 .congratulations p {
   font-size: 24px;
   font-weight: bold;
-  color: #ff69b4; /* ピンク色 */
+  color: #FFA500; /* オレンジ色 */
   animation: fadeIn 2s ease-in-out, scaleUp 2s ease-in-out;
 }
 
