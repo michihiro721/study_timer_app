@@ -83,3 +83,14 @@
     transform: translateY(100vh);
   }
 }
+
+/* 音量調節用のスライダーのスタイル */
+.volume-control {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#volume-slider {
+  width: 80%;
+  max-width: 300px;
+}

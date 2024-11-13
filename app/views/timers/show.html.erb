@@ -30,11 +30,18 @@
   Your browser does not support the audio element.
 </audio>
 
+<!-- 音量調節用のスライダー -->
+<div class="volume-control">
+  <label for="volume-slider">雨音の音量:</label>
+  <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+</div>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var startTime = new Date();
     var elapsedTimeElement = document.getElementById('elapsed-time');
     var rainSound = document.getElementById('rain-sound');
+    var volumeSlider = document.getElementById('volume-slider');
 
     function updateElapsedTime() {
       var now = new Date();
@@ -99,5 +106,10 @@
     });
 
     rainSound.play();
+
+    // 音量調節機能
+    volumeSlider.addEventListener('input', function() {
+      rainSound.volume = volumeSlider.value;
+    });
   });
 </script>
