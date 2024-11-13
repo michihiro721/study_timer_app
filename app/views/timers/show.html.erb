@@ -37,7 +37,11 @@
       var minutes = Math.floor((elapsedTime % 3600) / 60);
       var seconds = elapsedTime % 60;
 
-      elapsedTimeElement.textContent = hours + '時間' + minutes + '分' + seconds + '秒';
+      var formattedTime = hours + '時間' + minutes + '分' + seconds + '秒';
+      elapsedTimeElement.textContent = formattedTime;
+
+      // タイトルを更新
+      document.title = formattedTime + ' | 感謝の学習タイマー';
     }
 
     setInterval(updateElapsedTime, 1000);
