@@ -57,3 +57,9 @@
   font-weight: bold; /* 文字の太さを調整 */
   color: #333; /* 文字の色を調整 */
 }
+
+.margin-top {
+  margin-top: 30px; /* 「学習開始」ボタンと「今回の学習時間」の間の距離を調整 */
+  font-size: 40px; /* 文字の大きさを調整 */
+  color: #ff331c;  /* 文字の色を調整 */
+}

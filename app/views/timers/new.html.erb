@@ -18,7 +18,7 @@
   <% end %>
 
   <% if @last_timer && @last_timer.end_time.present? %>
-    <p class="large-text">今回の学習時間: <%= @last_timer.duration %></p>
+    <p class="large-text margin-top">今回の学習時間: <%= @last_timer.duration %></p>
   <% end %>
 
   <% if Timer.total_duration > 0 %>
