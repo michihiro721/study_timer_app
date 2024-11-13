@@ -1,4 +1,12 @@
-/* .study-content {
-  text-align: left;
-  margin: 20px;
-} */
+.study-content {
+  text-align: center;
+  margin: 20px auto;
+  width: 80%; /* 必要に応じて幅を調整 */
+}
+
+.study-content h1,
+.study-content p,
+.study-content form {
+  display: block;
+  margin-bottom: 10px; /* 各要素の間に余白を追加 */
+}

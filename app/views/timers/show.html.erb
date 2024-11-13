@@ -2,12 +2,14 @@
 
 <div class="study-content">
   <h1>学習中</h1>
+  <br>
 
   <% if @timer.end_time.present? %>
     <p>今回の学習時間: <%= @timer.duration %></p>
   <% else %>
     <!-- <p>学習が終了したら<br>「タイマー終了」ボタンを押してください。</p> -->
     <p>学習経過時間: <span id="elapsed-time">0時間0分0秒</span></p>
+    <br>
   <% end %>
 
   <!--<p>累計学習時間: <span id="total-duration"><%= Timer.formatted_total_duration %></span></p> -->
@@ -15,6 +17,7 @@
 
   <% if @timer.end_time.nil? %>
     <%= button_to "学習終了", stop_timer_path(@timer), method: :patch %>
+    <br>
   <% end %>
 </div>
 
