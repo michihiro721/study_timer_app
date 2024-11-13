@@ -82,19 +82,32 @@
   text-shadow: 2px 2px 4px #000000; /* 文字に影を追加 */
 }
 
+.styled-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff; /* 白色の文字色 */
+  background-color: #006400; /* 濃い緑色の背景 */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.styled-button:hover {
+  background-color: #e60000; /* ホバー時に少し濃い赤色に変更 */
+}
+
+.styled-button:active {
+  background-color: #cc0000; /* クリック時にさらに濃い赤色に変更 */
+}
+
 body {
   background: url('/assets/clover-field.jpg') no-repeat center center fixed;
   background-size: cover; /* 画面いっぱいに表示 */
 }
-
-/* @keyframes moveBackground {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -10000px 0;
-  }
-} */
 
 #background-video {
   position: fixed;

@@ -12,7 +12,7 @@
       <p>🎉おめでとうございます🎉<br>感謝のスタンプが満タンになりました！</p>
       <%= image_tag 'cute_image.png', alt: '可愛いイラスト' %>
       <p>大切な人に感謝の気持ちを伝えましょう！！</p>
-      <%= button_to "スタンプをリセットして学習再開", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button' %>
+      <%= button_to "🔥スタンプをリセットして学習再開🔥", reset_total_duration_timers_path, method: :delete, id: 'reset-total-duration-button', class: 'styled-button' %>
     </div>
   <% else %>
     <%= form_with model: @timer, local: true, html: { class: 'start-form' } do |form| %>
