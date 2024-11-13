@@ -72,3 +72,26 @@
   font-size: 40px; /* 文字の大きさを調整 */
   color: #FF69B4; /* ピンク色 */
 }
+
+body {
+  background: url('/assets/clover-field.jpg') no-repeat center center fixed;
+  background-size: cover; /* 画面いっぱいに表示 */
+}
+
+/* @keyframes moveBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 0;
+  }
+} */
+
+#background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
