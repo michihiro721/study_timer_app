@@ -62,8 +62,12 @@
 .margin-top {
   margin-top: 20px !important; /* 「学習開始」ボタンと「今回の学習時間」の間の距離を調整 */
   font-size: 40px; /* 文字の大きさを調整 */
-  color: #ffffff; /* 文字の色を白に変更 */
+  color: #00FF00; /* 文字の色を緑に変更 */
   text-shadow: 2px 2px 4px #000000; /* 文字に影を追加 */
+  display: inline-block; /* インラインブロックに変更して、文字の後ろだけ背景色を適用 */
+  background-color: rgba(255, 255, 255, 0.8); /* 背景色を白に変更し、少し透明度を追加 */
+  padding: 5px; /* 文字と数字の周りに余白を追加 */
+  border-radius: 5px; /* 角を丸くする */
 }
 
 .total-time {
