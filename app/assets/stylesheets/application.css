@@ -102,6 +102,14 @@ td {
   transition: background-color 0.3s ease;
 }
 
+.start-button::before {
+  content: "🌱学習開始🌱";
+}
+
+.start-button:hover::before {
+  content: "🔥学習開始🔥";
+}
+
 .start-button:hover {
   background-color: #fc1010;
 }

@@ -11,7 +11,7 @@
     </div>
   <% else %>
     <%= form_with model: @timer, local: true, html: { class: 'start-form' } do |form| %>
-      <%= form.submit "🔥学習開始🔥", class: 'start-button' %>
+      <%= form.submit "🌱学習開始🌱", class: 'start-button', id: 'start-button' %>
     <% end %>
   <% end %>
 
@@ -65,4 +65,17 @@
     <% end %>
   </table>
 </div>
+
+<!-- 学習開始ボタンの変更の処理をJavaScriptで実行 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var startButton = document.getElementById('start-button');
+    startButton.addEventListener('mouseover', function() {
+      startButton.value = '🔥学習開始🔥';
+    });
+    startButton.addEventListener('mouseout', function() {
+      startButton.value = '🌱学習開始🌱';
+    });
+  });
+</script>
 
