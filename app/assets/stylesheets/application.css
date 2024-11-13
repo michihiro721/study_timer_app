@@ -14,6 +14,15 @@
  *= require_self
  */
 
+/* 表示全体を中央揃え（上下） */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 table {
   border-collapse: collapse !important;
   margin-top: 20px !important;
@@ -79,6 +88,14 @@ td {
 .center-content p,
 .center-content table {
   margin: 0 auto;
+}
+
+.center-content table {
+  margin-top: 20px;
+}
+
+.center-content td {
+  text-align: center;
 }
 
 .info-text {
