@@ -56,3 +56,29 @@
   background-color: #cc0000;
   transform: scale(0.95);
 }
+
+/* 雨のエフェクトのスタイル */
+#rain-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* クリックイベントを無視 */
+  z-index: -1; /* 他の要素の背面に表示 */
+}
+
+.rain-drop {
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}

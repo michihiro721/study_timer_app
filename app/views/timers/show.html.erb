@@ -21,6 +21,9 @@
   <% end %>
 </div>
 
+<!-- 雨のエフェクトを表示するための要素 -->
+<div id="rain-container"></div>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var startTime = new Date();
@@ -38,5 +41,20 @@
     }
 
     setInterval(updateElapsedTime, 1000);
+
+    // 雨のエフェクトを作成するスクリプト
+    const rainContainer = document.getElementById('rain-container');
+    const createRainDrop = () => {
+      const rainDrop = document.createElement('div');
+      rainDrop.className = 'rain-drop';
+      rainDrop.style.left = `${Math.random() * 100}vw`;
+      rainDrop.style.animationDuration = `${Math.random() * 0.5 + 0.5}s`;
+      rainContainer.appendChild(rainDrop);
+      setTimeout(() => {
+        rainDrop.remove();
+      }, 1000);
+    };
+
+    setInterval(createRainDrop, 100);
   });
 </script>
