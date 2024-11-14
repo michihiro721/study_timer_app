@@ -76,8 +76,11 @@
       document.title = titleTime + ' | 感謝の学習タイマー';
     }
 
-    // 1秒ごとに経過時間を更新
-    setInterval(updateElapsedTime, 1000);
+    // タイマーの更新を `requestAnimationFrame` で行う
+    function startTimer() {
+      updateElapsedTime();
+      requestAnimationFrame(startTimer);
+    }
 
     // 10秒ごとにタイトルを更新
     setInterval(updateTitleTime, 10000); // 10秒ごとに更新ここで変更可能
@@ -136,5 +139,8 @@
 
     // 初期アイコンの設定
     updateVolumeIcon();
+
+    // タイマーを開始
+    startTimer();
   });
 </script>
