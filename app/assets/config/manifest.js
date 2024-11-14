@@ -1,5 +1,6 @@
 //= link_tree ../images
 //= link_directory ../stylesheets .css
+//= link_directory ../audios .mp3
 //= link message1.mp3
 //= link message2.mp3
 //= link_tree ../../javascript .js
