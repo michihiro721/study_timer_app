@@ -17,14 +17,13 @@
   <% end %>
 </div>
 
+<!-- 録音したメッセージの音声要素 -->
+<audio id="message1" src="<%= @message1 %>" preload="auto"></audio>
+<audio id="message2" src="<%= @message2 %>" preload="auto"></audio>
+<audio id="rain-sound" src="<%= @rain_sound %>" preload="auto" loop></audio>
+
 <!-- 雨のエフェクトを表示するための要素 -->
 <div id="rain-container"></div>
-
-<!-- 雨音の音声要素 -->
-<audio id="rain-sound" loop>
-  <source src="<%= asset_path 'rain-sound.mp3' %>" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
 
 <!-- 音量調節用のスライダー -->
 <div class="volume-control">
@@ -36,9 +35,25 @@
   document.addEventListener('DOMContentLoaded', function() {
     var startTime = new Date();
     var elapsedTimeElement = document.getElementById('elapsed-time');
+    var message1 = document.getElementById('message1');
+    var message2 = document.getElementById('message2');
     var rainSound = document.getElementById('rain-sound');
     var volumeSlider = document.getElementById('volume-slider');
     var volumeIcon = document.getElementById('volume-icon');
+    var isMessage1Playing = false;
+
+    // 雨のエフェクトを追加する関数
+    function createRainEffect() {
+      var rainContainer = document.getElementById('rain-container');
+      for (var i = 0; i < 100; i++) {
+        var rainDrop = document.createElement('div');
+        rainDrop.className = 'rain-drop';
+        rainDrop.style.left = Math.random() * 100 + 'vw';
+        rainDrop.style.animationDuration = Math.random() * 2 + 3 + 's';
+        rainDrop.style.animationDelay = Math.random() * 5 + 's';
+        rainContainer.appendChild(rainDrop);
+      }
+    }
 
     // 経過時間を更新する関数
     function updateElapsedTime() {
@@ -51,6 +66,15 @@
 
       var formattedTime = hours + '時間' + minutes + '分' + seconds + '秒';
       elapsedTimeElement.textContent = formattedTime;
+
+      // メッセージの再生
+      if (elapsedTime % 35 === 25 && !isMessage1Playing) {
+        message1.play();
+        isMessage1Playing = true;
+      } else if (elapsedTime % 35 === 0 && isMessage1Playing) {
+        message2.play();
+        isMessage1Playing = false;
+      }
     }
 
     // タイトルの時間を更新する関数
@@ -83,60 +107,21 @@
     // 10秒ごとにタイトルを更新
     setInterval(updateTitleTime, 10000);
 
-    // 雨のエフェクトを作成するスクリプト
-    const rainContainer = document.getElementById('rain-container');
-    const createRainDrop = () => {
-      const rainDrop = document.createElement('div');
-      rainDrop.className = 'rain-drop';
-      rainDrop.style.left = `${Math.random() * 100}vw`;
-      rainDrop.style.animationDuration = `${Math.random() * 0.5 + 0.5}s`;
-      rainContainer.appendChild(rainDrop);
-      setTimeout(() => {
-        rainDrop.remove();
-      }, 1000);
-    };
-
-    setInterval(createRainDrop, 100);
-
-    // 雨音をシームレスにループ再生
-    rainSound.addEventListener('timeupdate', function() {
-      var buffer = 0.44; // 途切れを防ぐためのバッファ時間（秒）
-      if (rainSound.currentTime > rainSound.duration - buffer) {
-        rainSound.currentTime = 0;
-        rainSound.play();
-      }
-    });
-
+    // 雨音を再生
     rainSound.play();
 
-    // 音量調節機能
+    // 音量スライダーの表示/非表示を切り替える関数
+    volumeIcon.addEventListener('click', function() {
+      volumeSlider.style.display = volumeSlider.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // 音量を調整する関数
     volumeSlider.addEventListener('input', function() {
       rainSound.volume = volumeSlider.value;
-      updateVolumeIcon();
     });
 
-    // アイコンをクリックするとスライダーを表示/非表示にする
-    volumeIcon.addEventListener('click', function() {
-      if (volumeSlider.style.display === 'none') {
-        volumeSlider.style.display = 'block';
-      } else {
-        volumeSlider.style.display = 'none';
-      }
-    });
-
-    // 音量に応じてアイコンを変更する関数
-    function updateVolumeIcon() {
-      if (rainSound.volume === 0) {
-        volumeIcon.className = 'fas fa-volume-mute';
-      } else if (rainSound.volume <= 0.5) {
-        volumeIcon.className = 'fas fa-volume-down';
-      } else {
-        volumeIcon.className = 'fas fa-volume-up';
-      }
-    }
-
-    // 初期アイコンの設定
-    updateVolumeIcon();
+    // 雨のエフェクトを作成
+    createRainEffect();
 
     // タイマーを開始
     startTimer();
