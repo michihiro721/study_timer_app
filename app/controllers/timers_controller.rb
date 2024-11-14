@@ -1,13 +1,13 @@
 class TimersController < ApplicationController
   # 新しいタイマーを作成するアクション
   def new
-    @timer = Timer.new
-    @last_timer = Timer.order(created_at: :desc).first
-    @total_duration = Timer.total_duration
-    @total_stamps = (session[:total_duration] || 0) / 3600
-    @total_stamps ||= 0
-    @cells = params[:cells].to_i > 0 ? params[:cells].to_i : 30
-    @independent_total_duration = session[:independent_total_duration] || 0
+    @timer = Timer.new # 新しいTimerオブジェクトを作成
+    @last_timer = Timer.order(created_at: :desc).first # 最新のTimerオブジェクトを取得
+    @total_duration = Timer.total_duration # Timerの総合時間を取得
+    @total_stamps = (session[:total_duration] || 0) / 3600 # セッションから総合時間を取得し、3600で割って時間単位に変換
+    @total_stamps ||= 0 # 総合時間がnilの場合は0を設定
+    @cells = params[:cells].to_i > 0 ? params[:cells].to_i : 30 # パラメータからセルの数を取得し、0以下の場合はデフォルト値30を設定
+    @independent_total_duration = session[:independent_total_duration] || 0 # セッションから独立した総合時間を取得し、nilの場合は0を設定
   end
 
   # タイマーを作成するアクション
