@@ -68,10 +68,10 @@
       elapsedTimeElement.textContent = formattedTime;
 
       // メッセージの再生
-      if (elapsedTime % 35 === 25 && !isMessage1Playing) {
+      if (elapsedTime % 40 === 30 && !isMessage1Playing) {
         message1.play();
         isMessage1Playing = true;
-      } else if (elapsedTime % 35 === 0 && isMessage1Playing) {
+      } else if (elapsedTime % 40 === 0 && isMessage1Playing) { // 30秒後にメッセージ1、次に10秒後にメッセージ2を再生
         message2.play();
         isMessage1Playing = false;
       }
