@@ -96,7 +96,7 @@
 }
 
 .styled-button:hover {
-  background-color: #e60000; /* ホバー時に少し濃い赤色に変更 */
+  background-color: #ff6666; /* ホバー時に優しい赤色に変更 */
 }
 
 .styled-button:active {
@@ -128,4 +128,19 @@ body {
   height: 100%;
   background: rgba(0, 0, 0, 0.2); /* 透明度を上げた黒いオーバーレイ */
   z-index: -1;
+}
+
+/* ホバー時のメッセージのスタイル */
+.hover-message {
+  display: none;
+  font-size: 30px;
+  color: #000000;
+  background-color: rgba(135, 206, 235, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 420px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
 }

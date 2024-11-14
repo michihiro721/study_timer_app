@@ -28,27 +28,30 @@
   <p class="large-text total-time">累計学習時間: <%= Time.at(@independent_total_duration || 0).utc.strftime("%H時間%M分%S秒") %></p>
 
   <!-- スタンプの表を表示 -->
-  <table style="background-color: white;">
-    <p class="large-text">現在のスタンプ数（1秒の学習で1カウント）: <%= Timer.stamps %></p>
-    <% cells = (params[:cells] || 30).to_i %>
-    <% rows = (cells / 10.0).ceil %>
-    <% rows.times do |row| %>
-      <tr>
-        <% 10.times do |col| %>
-          <% index = row * 10 + col %>
-          <td>
-            <% if index < cells %>
-              <% if index < Timer.stamps %>
-                <span>☘️</span> <!-- スタンプが押された状態 -->
-              <% else %>
-                <span>⬜️</span> <!-- スタンプが押されていない状態 -->
+  <div class="stamp-container">
+    <p class="large-text">現在のスタンプ数: <%= Timer.stamps %></p>
+    <div class="hover-message">1秒の学習ごとに1スタンプ獲得</div>
+    <table style="background-color: white;">
+      <% cells = (params[:cells] || 30).to_i %>
+      <% rows = (cells / 10.0).ceil %>
+      <% rows.times do |row| %>
+        <tr>
+          <% 10.times do |col| %>
+            <% index = row * 10 + col %>
+            <td>
+              <% if index < cells %>
+                <% if index < Timer.stamps %>
+                  <span>☘️</span> <!-- スタンプが押された状態 -->
+                <% else %>
+                  <span>⬜️</span> <!-- スタンプが押されていない状態 -->
+                <% end %>
               <% end %>
-            <% end %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
 
 <!-- 学習開始ボタンの変更の処理をJavaScriptで実行 -->
@@ -60,6 +63,18 @@
     });
     startButton.addEventListener('mouseout', function() {
       startButton.value = '🌱学習開始🌱';
+    });
+
+    // スタンプ表にホバー時のメッセージ表示
+    var stampContainer = document.querySelector('.stamp-container');
+    var hoverMessage = document.querySelector('.hover-message');
+
+    stampContainer.addEventListener('mouseover', function() {
+      hoverMessage.style.display = 'block';
+    });
+
+    stampContainer.addEventListener('mouseout', function() {
+      hoverMessage.style.display = 'none';
     });
   });
 </script>
