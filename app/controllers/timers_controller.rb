@@ -1,4 +1,5 @@
 class TimersController < ApplicationController
+  # 新しいタイマーを作成するアクション
   def new
     @timer = Timer.new
     @last_timer = Timer.order(created_at: :desc).first
@@ -9,6 +10,7 @@ class TimersController < ApplicationController
     @independent_total_duration = session[:independent_total_duration] || 0
   end
 
+  # タイマーを作成するアクション
   def create
     @timer = Timer.create(start_time: Time.current)
     if @timer.save
@@ -18,10 +20,12 @@ class TimersController < ApplicationController
     end
   end
 
+  # タイマーを表示するアクション
   def show
     @timer = Timer.find(params[:id])
   end
 
+  # 学習ページを表示するアクション
   def study
     @timer = Timer.order(created_at: :desc).first
     render :show

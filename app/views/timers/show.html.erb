@@ -7,13 +7,9 @@
   <% if @timer.end_time.present? %>
     <p>今回の学習時間: <%= @timer.duration %></p>
   <% else %>
-    <!-- <p>学習が終了したら<br>「タイマー終了」ボタンを押してください。</p> -->
     <p class="elapsed-time"><span id="elapsed-time">0秒</span></p>
     <br>
   <% end %>
-
-  <!--<p>累計学習時間: <span id="total-duration"><%= Timer.formatted_total_duration %></span></p> -->
-  <!--<p>スタンプ数: <%= Timer.stamps %></p> -->
 
   <% if @timer.end_time.nil? %>
     <%= button_to "学習終了", stop_timer_path(@timer), method: :patch, class: "stop-timer-button" %>
@@ -44,6 +40,7 @@
     var volumeSlider = document.getElementById('volume-slider');
     var volumeIcon = document.getElementById('volume-icon');
 
+    // 経過時間を更新する関数
     function updateElapsedTime() {
       var now = new Date();
       var elapsedTime = Math.floor((now - startTime) / 1000);
@@ -56,6 +53,7 @@
       elapsedTimeElement.textContent = formattedTime;
     }
 
+    // タイトルの時間を更新する関数
     function updateTitleTime() {
       var now = new Date();
       var elapsedTime = Math.floor((now - startTime) / 1000);
@@ -83,7 +81,7 @@
     }
 
     // 10秒ごとにタイトルを更新
-    setInterval(updateTitleTime, 10000); // 10秒ごとに更新ここで変更可能
+    setInterval(updateTitleTime, 10000);
 
     // 雨のエフェクトを作成するスクリプト
     const rainContainer = document.getElementById('rain-container');
@@ -126,7 +124,7 @@
       }
     });
 
-    // 音量に応じてアイコンを変更する
+    // 音量に応じてアイコンを変更する関数
     function updateVolumeIcon() {
       if (rainSound.volume === 0) {
         volumeIcon.className = 'fas fa-volume-mute';

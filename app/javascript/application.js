@@ -1,18 +1,9 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-// import "@hotwired/turbo-rails"
-// import "./controllers"
+// タイマー機能をインポート
 import "packs/timer";
 
-// import Rails from "@rails/ujs"
-// import Turbolinks from "turbolinks"
-// import * as ActiveStorage from "@rails/activestorage"
-// import "channels"
-
-// Rails.start()
-// Turbolinks.start()
-// ActiveStorage.start()
-
+// DOMが完全に読み込まれた後に実行されるイベントリスナー
 document.addEventListener('DOMContentLoaded', () => {
+  // リセットボタンの確認ダイアログを設定
   const resetButton = document.getElementById('reset-button');
   if (resetButton) {
     resetButton.addEventListener('click', (event) => {
@@ -21,16 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
 
-document.addEventListener('DOMContentLoaded', function() {
+  // スタンプが満タンになったときのクラッカーアニメーションを追加
   if (document.querySelector('.congratulations')) {
-    // クラッカーのアニメーションを追加
     for (let i = 0; i < 100; i++) {
       createConfetti();
     }
   }
 
+  // クラッカーのアニメーションを作成する関数
   function createConfetti() {
     const confetti = document.createElement('div');
     confetti.classList.add('confetti');
@@ -39,11 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
     confetti.style.animationDelay = `${Math.random() * 2}s`;
     document.body.appendChild(confetti);
 
+    // 3秒後にクラッカーを削除
     setTimeout(() => {
       confetti.remove();
     }, 3000);
   }
 
+  // ランダムな色を生成する関数
   function getRandomColor() {
     const colors = ['#ff69b4', '#ff4500', '#ffd700', '#32cd32', '#1e90ff', '#8a2be2'];
     return colors[Math.floor(Math.random() * colors.length)];
