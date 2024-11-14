@@ -87,7 +87,8 @@
 }
 
 /* 音量調節用のスライダーのスタイル */
-.volume-control {
+.volume-control,
+.message-volume-control {
   position: fixed;
   top: 10px;
   right: 10px;
@@ -102,12 +103,24 @@
   justify-content: center;
 }
 
-.volume-control i {
+.message-volume-control-adjusted {
+  top: 70px; /* 位置を少し下にずらす */
+  color: #ff69b4!important; /* ピンクよりの赤に変更 */
+}
+
+.volume-control i,
+.message-volume-control i {
   color: #00ccff; /* 雨に似合う青色 */
   font-size: 30px;
 }
 
-#volume-slider {
+.message-volume-control i {
+  color: #ff69b4; /* ピンク色 */
+  font-size: 30px;
+}
+
+#volume-slider,
+#message-volume-slider {
   width: 150px;
   display: none; /* 初期状態で非表示 */
 }

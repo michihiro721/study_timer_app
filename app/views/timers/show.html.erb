@@ -25,10 +25,16 @@
 <!-- 雨のエフェクトを表示するための要素 -->
 <div id="rain-container"></div>
 
-<!-- 音量調節用のスライダー -->
+<!-- 雨音の音量調節用のスライダー -->
 <div class="volume-control">
   <i id="volume-icon" class="fas fa-volume-up"></i>
   <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" style="display: none;">
+</div>
+
+<!-- 音声メッセージの音量調節用のスライダー -->
+<div class="message-volume-control message-volume-control-adjusted">
+  <i id="message-volume-icon" class="fas fa-user"></i>
+  <input type="range" id="message-volume-slider" min="0" max="1" step="0.01" value="0.5" style="display: none;">
 </div>
 
 <script>
@@ -40,6 +46,8 @@
     var rainSound = document.getElementById('rain-sound');
     var volumeSlider = document.getElementById('volume-slider');
     var volumeIcon = document.getElementById('volume-icon');
+    var messageVolumeSlider = document.getElementById('message-volume-slider');
+    var messageVolumeIcon = document.getElementById('message-volume-icon');
     var isMessage1Playing = false;
 
     // 雨のエフェクトを追加する関数
@@ -110,14 +118,25 @@
     // 雨音を再生
     rainSound.play();
 
-    // 音量スライダーの表示/非表示を切り替える関数
+    // 雨音の音量スライダーの表示/非表示を切り替える関数
     volumeIcon.addEventListener('click', function() {
       volumeSlider.style.display = volumeSlider.style.display === 'none' ? 'block' : 'none';
     });
 
-    // 音量を調整する関数
+    // 雨音の音量を調整する関数
     volumeSlider.addEventListener('input', function() {
       rainSound.volume = volumeSlider.value;
+    });
+
+    // 音声メッセージの音量スライダーの表示/非表示を切り替える関数
+    messageVolumeIcon.addEventListener('click', function() {
+      messageVolumeSlider.style.display = messageVolumeSlider.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // 音声メッセージの音量を調整する関数
+    messageVolumeSlider.addEventListener('input', function() {
+      message1.volume = messageVolumeSlider.value;
+      message2.volume = messageVolumeSlider.value;
     });
 
     // 雨のエフェクトを作成
