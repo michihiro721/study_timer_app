@@ -95,12 +95,14 @@
   text-align: center;
   z-index: 1000; /* 他の要素の前面に表示 */
   cursor: pointer; /* カーソルをポインタに変更 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .volume-control i {
   color: #00ccff; /* 雨に似合う青色 */
   font-size: 30px;
-  margin-right: 10px;
 }
 
 #volume-slider {
