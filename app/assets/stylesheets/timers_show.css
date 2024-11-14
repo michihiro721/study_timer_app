@@ -1,3 +1,4 @@
+/* 学習タイマーのスタイル */
 .study-content {
   text-align: center;
   margin: 20px auto;
@@ -29,6 +30,7 @@
   margin-top: 1px; /* 上方向の余白を小さくする */
 }
 
+/* 学習終了ボタンのスタイル */
 .stop-timer-button {
   display: inline-block;
   padding: 15px 30px;

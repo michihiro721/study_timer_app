@@ -1,12 +1,4 @@
-/* 表示全体を中央揃え（上下） */
-/* html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
+/* 中央揃えのスタイル */
 .center-content {
   text-align: center;
 }
@@ -25,6 +17,7 @@
   text-align: center;
 }
 
+/* 学習開始ボタンのスタイル */
 .start-button {
   display: inline-block;
   padding: 15px 30px;
@@ -47,10 +40,12 @@
   background-color: #3659e5;
 }
 
+/* 学習開始フォームのスタイル */
 .start-form {
   margin-top: 20px;
 }
 
+/* 大きなテキストのスタイル */
 .large-text {
   font-size: 24px; /* 文字の大きさを調整 */
   margin-bottom: 15px; /* 文字と文字の間を調整 */
@@ -59,6 +54,7 @@
   text-shadow: 2px 2px 4px #000000; /* 文字に影を追加 */
 }
 
+/* マージントップのスタイル */
 .margin-top {
   margin-top: 20px !important; /* 「学習開始」ボタンと「今回の学習時間」の間の距離を調整 */
   font-size: 40px; /* 文字の大きさを調整 */
@@ -70,18 +66,21 @@
   border-radius: 5px; /* 角を丸くする */
 }
 
+/* 累計時間のスタイル */
 .total-time {
   margin-top: 20px !important; /* 「今回の学習時間」の上部の余白を調整 */
   color: #ffffff; /* 文字の色を白に変更 */
   text-shadow: 2px 2px 4px #000000; /* 文字に影を追加 */
 }
 
+/* ヘッダータイトルのスタイル */
 .header-title {
   font-size: 40px; /* 文字の大きさを調整 */
   color: #FFC0CB; /* 文字の色を薄めのピンク色に変更 */
   text-shadow: 2px 2px 4px #000000; /* 文字に影を追加 */
 }
 
+/* スタイルされたボタンのスタイル */
 .styled-button {
   display: inline-block;
   padding: 10px 20px;
@@ -101,14 +100,16 @@
 }
 
 .styled-button:active {
-  background-color: #cc0000; /* クリック時にさらに濃い赤色に変更 */
+  background-color: #cc0000; /* クリック時にさらに濃���赤色に変更 */
 }
 
+/* 背景のスタイル */
 body {
   background: url('/assets/clover-field.jpg') no-repeat center center fixed;
   background-size: cover; /* 画面いっぱいに表示 */
 }
 
+/* 背景ビデオのスタイル */
 #background-video {
   position: fixed;
   right: 0;
@@ -118,6 +119,7 @@ body {
   z-index: -1;
 }
 
+/* オーバーレイのスタイル */
 .overlay {
   position: fixed;
   top: 0;
