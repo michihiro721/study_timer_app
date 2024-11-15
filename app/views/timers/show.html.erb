@@ -152,7 +152,20 @@
     messageVolumeSlider.addEventListener('input', function() {
       message1.volume = messageVolumeSlider.value;
       message2.volume = messageVolumeSlider.value;
+      updateMessageVolumeIcon();
     });
+
+    // 音量に応じてアイコンを変更する関数
+    function updateMessageVolumeIcon() {
+      if (message1.volume === 0 && message2.volume === 0) {
+        messageVolumeIcon.className = 'fas fa-volume-mute'; // 消音アイコンに変更
+      } else {
+        messageVolumeIcon.className = 'fas fa-user'; // 元のアイコンに戻す
+      }
+    }
+
+    // 初期アイコンの設定
+    updateMessageVolumeIcon();
 
     // 雨のエフェクトを作成
     createRainEffect();
