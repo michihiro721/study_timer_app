@@ -88,6 +88,7 @@
     var lastElapsedTime = 0;
     var isTabActive = true;
     var selectedVoice = 'female';
+    var tempSelectedVoice = selectedVoice; // 一時的に選択された声の設定を保存
 
     // ローカルストレージから設定を読み込む関数
     function loadSettings() {
@@ -105,6 +106,7 @@
       }
       if (savedVoice) {
         selectedVoice = savedVoice;
+        tempSelectedVoice = savedVoice; // 一時的な設定も更新
         document.querySelector(`input[name="voice"][value="${savedVoice}"]`).checked = true;
         updateMessageVolumeIconColor();
       }
@@ -277,9 +279,8 @@
     // 音声メッセージの選択を変更する関数
     document.querySelectorAll('input[name="voice"]').forEach(function(radio) {
       radio.addEventListener('change', function() {
-        selectedVoice = this.value;
+        tempSelectedVoice = this.value; // 一時的に選択された声の設定を保存
         updateMessageVolumeIconColor(); // アイコンの色を更新
-        saveSettings(); // 設定を保存
       });
     });
 
@@ -337,8 +338,10 @@
     }
 
     function setPomodoro() {
+      selectedVoice = tempSelectedVoice; // 一時的な設定を反映
       resetCountdown();
       saveSettings(); // 設定を保存
+      updateMessageVolumeIconColor(); // アイコンの色を更新
       // 設定ボタンをクリックしたときに音声メッセージのボリューム調整アイコンを閉じる
       messageVolumeSlider.style.display = 'none';
       voiceSelection.style.display = 'none';
