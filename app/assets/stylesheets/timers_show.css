@@ -220,13 +220,15 @@
 .pomodoro-settings input {
   width: 50px;
   margin-bottom: 10px;
+  font-size: 30px; /* フォントサイズを調整 */
+  text-align: center; /* テキストをセンターに */
 }
 
 .pomodoro-settings button {
   display: block; /* ブロック要素に変更して下に配置 */
   margin: 10px auto 0; /* 上方向の余白を追加し、中央に配置 */
   padding: 5px 10px;
-  font-size: 14px;
+  font-size: 25px;
   font-weight: bold;
   color: #fff;
   background-color: #3F95FF;
