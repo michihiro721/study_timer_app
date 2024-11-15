@@ -208,6 +208,7 @@
   border-radius: 0px;
   text-align: center;
   z-index: 1000; /* 他の要素の前面に表示 */
+  display: none; /* 初期状態で非表示 */
 }
 
 .pomodoro-settings label {

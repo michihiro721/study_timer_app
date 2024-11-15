@@ -84,6 +84,7 @@
     var messageVolumeSlider = document.getElementById('message-volume-slider');
     var messageVolumeIcon = document.getElementById('message-volume-icon');
     var voiceSelection = document.querySelector('.voice-selection');
+    var pomodoroSettings = document.querySelector('.pomodoro-settings');
     var isMessage1Playing = false;
     var lastElapsedTime = 0;
     var isTabActive = true;
@@ -198,6 +199,7 @@
     messageVolumeIcon.addEventListener('click', function() {
       var isSliderVisible = messageVolumeSlider.style.display === 'block';
       messageVolumeSlider.style.display = isSliderVisible ? 'none' : 'block';
+      pomodoroSettings.style.display = isSliderVisible ? 'none' : 'block';
       voiceSelection.style.display = isSliderVisible ? 'none' : 'block';
     });
 
