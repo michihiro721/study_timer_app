@@ -103,6 +103,10 @@
   justify-content: center;
 }
 
+.volume-control {
+  right: 10px; /* 少し左に動かす  削除しても問題ない */
+}
+
 .message-volume-control-adjusted {
   top: 70px; /* 位置を少し下にずらす */
 }
@@ -118,7 +122,7 @@
 }
 
 .message-volume-control-adjusted {
-  top: 10px; /* 位置を少し上にずらす */
+  top: 70px; /* 位置を少し上にずらす */
 }
 
 #volume-slider,
@@ -136,7 +140,7 @@
   padding: 5px 10px; /* 内側の余白を追加 */
   border-radius: 0px; /* 角を丸くする */
   position: fixed;
-  top: 60px; /* 画面右上ちょい下に配置 */
+  top: 110px; /* 画面右上ちょい下に配置 */
   right: 10px;
   background: rgba(255, 255, 255, 0.5); /* 半透明の白色背景 */
 }
@@ -150,7 +154,7 @@
   padding: 5px 10px; /* 内側の余白を追加 */
   border-radius: 0px; /* 角を丸くする */
   position: fixed;
-  top: 100px; /* 画面右上ちょい下に配置 */
+  top: 150px; /* 画面右上ちょい下に配置 */
   right: 10px;
   background: rgba(255, 255, 255, 0.5); /* 半透明の白色背景 */
 }
