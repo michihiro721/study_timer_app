@@ -40,7 +40,7 @@
 </div>
 
 <!-- 音声メッセージの選択 -->
-<div class="message-selection">
+<div class="voice-selection">
   <label class="voice-female">
     <input type="radio" name="voice" value="female" checked> 女性の声
   </label>
@@ -62,6 +62,7 @@
     var volumeIcon = document.getElementById('volume-icon');
     var messageVolumeSlider = document.getElementById('message-volume-slider');
     var messageVolumeIcon = document.getElementById('message-volume-icon');
+    var voiceSelection = document.querySelector('.voice-selection');
     var isMessage1Playing = false;
     var lastElapsedTime = 0;
     var isTabActive = true;
@@ -174,7 +175,9 @@
 
     // 音声メッセージの音量スライダーの表示/非表示を切り替える関数
     messageVolumeIcon.addEventListener('click', function() {
-      messageVolumeSlider.style.display = messageVolumeSlider.style.display === 'none' ? 'block' : 'none';
+      var isSliderVisible = messageVolumeSlider.style.display === 'block';
+      messageVolumeSlider.style.display = isSliderVisible ? 'none' : 'block';
+      voiceSelection.style.display = isSliderVisible ? 'none' : 'block';
     });
 
     // 音声メッセージの音量を調整する関数
