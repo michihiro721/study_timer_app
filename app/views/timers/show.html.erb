@@ -300,6 +300,10 @@
 
     function setPomodoro() {
       resetCountdown();
+      // 設定ボタンをクリックしたときに音声メッセージのボリューム調整アイコンを閉じる
+      messageVolumeSlider.style.display = 'none';
+      voiceSelection.style.display = 'none';
+      pomodoroSettings.style.display = 'none';
     }
 
     resetCountdownButton.addEventListener('click', resetCountdown);
