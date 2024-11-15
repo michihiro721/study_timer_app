@@ -105,11 +105,9 @@
 
 .message-volume-control-adjusted {
   top: 70px; /* 位置を少し下にずらす */
-  color: #ff69b4!important; /* ピンクよりの赤に変更 */
 }
 
-.volume-control i,
-.message-volume-control i {
+.volume-control i {
   color: #00ccff; /* 雨に似合う青色 */
   font-size: 30px;
 }

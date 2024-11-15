@@ -118,15 +118,30 @@
     // 雨音を再生
     rainSound.play();
 
-    // 雨音の音量スライダーの表示/非表示を切り替える関数
+    // 音量スライダーの表示/非表示を切り替える関数
     volumeIcon.addEventListener('click', function() {
       volumeSlider.style.display = volumeSlider.style.display === 'none' ? 'block' : 'none';
     });
 
-    // 雨音の音量を調整する関数
+    // 音量を調整する関数
     volumeSlider.addEventListener('input', function() {
       rainSound.volume = volumeSlider.value;
+      updateVolumeIcon();
     });
+
+    // 音量に応じてアイコンを変更する関数
+    function updateVolumeIcon() {
+      if (rainSound.volume === 0) {
+        volumeIcon.className = 'fas fa-volume-mute';
+      } else if (rainSound.volume <= 0.5) {
+        volumeIcon.className = 'fas fa-volume-down';
+      } else {
+        volumeIcon.className = 'fas fa-volume-up';
+      }
+    }
+
+    // 初期アイコンの設定
+    updateVolumeIcon();
 
     // 音声メッセージの音量スライダーの表示/非表示を切り替える関数
     messageVolumeIcon.addEventListener('click', function() {
