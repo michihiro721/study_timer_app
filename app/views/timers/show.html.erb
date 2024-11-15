@@ -81,7 +81,7 @@
       }
     }
 
-    // 経過時間を��新する関数
+    // 経過時間を更新する関数
     function updateElapsedTime() {
       var now = new Date();
       var elapsedTime = Math.floor((now - startTime) / 1000);
@@ -142,8 +142,8 @@
       requestAnimationFrame(startTimer);
     }
 
-    // 10秒ごとにタイトルを更新
-    setInterval(updateTitleTime, 10000);
+    // 1秒ごとにタイトルを更新
+    setInterval(updateTitleTime, 1000);
 
     // 雨音を再生
     rainSound.play();
