@@ -146,7 +146,7 @@
   display: block;
   margin-top: 10px; /* 上方向の余白を追加 */
   font-size: 20px; /* フォントサイズを調整 */
-  color: #00aaff; /* テキストの色を明るい青に設定 */
+  color: #00ccff; /* テキストの色を薄い青に設定 */
   padding: 5px 10px; /* 内側の余白を追加 */
   border-radius: 0px; /* 角を丸くする */
   position: fixed;

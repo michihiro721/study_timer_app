@@ -81,7 +81,7 @@
       }
     }
 
-    // 経過時間を更新する関数
+    // 経過時間を��新する関数
     function updateElapsedTime() {
       var now = new Date();
       var elapsedTime = Math.floor((now - startTime) / 1000);
@@ -205,6 +205,18 @@
     // 初期アイコンの設定
     updateMessageVolumeIcon();
 
+    // 音声メッセージの選択に応じてアイコンの色を変更する関数
+    function updateMessageVolumeIconColor() {
+      if (selectedVoice === 'female') {
+        messageVolumeIcon.style.color = '#f83798'; // ピンク色
+      } else {
+        messageVolumeIcon.style.color = '#00ccff'; // 青色
+      }
+    }
+
+    // 初期アイコンの色の設定
+    updateMessageVolumeIconColor();
+
     // タブの可視性が変更されたときの処理
     document.addEventListener('visibilitychange', function() {
       isTabActive = document.visibilityState === 'visible';
@@ -224,6 +236,7 @@
     document.querySelectorAll('input[name="voice"]').forEach(function(radio) {
       radio.addEventListener('change', function() {
         selectedVoice = this.value;
+        updateMessageVolumeIconColor(); // アイコンの色を更新
       });
     });
 
