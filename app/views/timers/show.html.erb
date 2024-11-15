@@ -49,6 +49,8 @@
     var messageVolumeSlider = document.getElementById('message-volume-slider');
     var messageVolumeIcon = document.getElementById('message-volume-icon');
     var isMessage1Playing = false;
+    var lastElapsedTime = 0;
+    var isTabActive = true;
 
     // 雨のエフェクトを追加する関数
     function createRainEffect() {
@@ -83,6 +85,8 @@
         message2.play();
         isMessage1Playing = false;
       }
+
+      lastElapsedTime = elapsedTime;
     }
 
     // タイトルの時間を更新する関数
@@ -108,7 +112,9 @@
 
     // タイマーの更新を `requestAnimationFrame` で行う
     function startTimer() {
-      updateElapsedTime();
+      if (isTabActive) {
+        updateElapsedTime();
+      }
       requestAnimationFrame(startTimer);
     }
 
@@ -166,6 +172,21 @@
 
     // 初期アイコンの設定
     updateMessageVolumeIcon();
+
+    // タブの可視性が変更されたときの処理
+    document.addEventListener('visibilitychange', function() {
+      isTabActive = document.visibilityState === 'visible';
+      if (isTabActive) {
+        startTime = new Date() - lastElapsedTime * 1000;
+      }
+    });
+
+    // タブが非アクティブなときでも音声メッセージを再生するための処理（神）
+    setInterval(function() {
+      if (!isTabActive) {
+        updateElapsedTime();
+      }
+    }, 1000);
 
     // 雨のエフェクトを作成
     createRainEffect();
