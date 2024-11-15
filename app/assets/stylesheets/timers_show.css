@@ -117,6 +117,10 @@
   font-size: 30px;
 }
 
+.message-volume-control-adjusted {
+  top: 10px; /* 位置を少し上にずらす */
+}
+
 #volume-slider,
 #message-volume-slider {
   width: 150px;
