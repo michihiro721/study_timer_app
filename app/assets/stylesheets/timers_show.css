@@ -219,7 +219,7 @@
 }
 
 .pomodoro-settings input {
-  width: 50px;
+  width: 80px; /* 幅を広くする */
   margin-bottom: 10px;
   font-size: 30px; /* フォントサイズを調整 */
   text-align: center; /* テキストをセンターに */
