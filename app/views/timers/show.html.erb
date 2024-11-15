@@ -17,6 +17,18 @@
   <% end %>
 </div>
 
+<!-- ポモドーロタイマーの要素 -->
+<div class="countdown-timer">
+  <h2>ポモドーロ</h2>
+  <div>
+    <span id="countdown-display">25:00</span>
+  </div>
+  <div>
+    <button id="start-countdown">開始</button>
+    <button id="reset-countdown">リセット</button>
+  </div>
+</div>
+
 <!-- 録音したメッセージの音声要素 -->
 <audio id="message1-female" src="<%= @message1_female %>" preload="auto"></audio>
 <audio id="message2-female" src="<%= @message2_female %>" preload="auto"></audio>
@@ -239,6 +251,47 @@
         updateMessageVolumeIconColor(); // アイコンの色を更新
       });
     });
+
+    // ポモドーロタイマーの設定
+    var countdownDisplay = document.getElementById('countdown-display');
+    var startCountdownButton = document.getElementById('start-countdown');
+    var resetCountdownButton = document.getElementById('reset-countdown');
+    var countdownInterval;
+    var isWorkSession = true;
+    var countdownTime = 25 * 60; // 25分 開始の時間
+
+    function updateCountdownDisplay() {
+      var minutes = Math.floor(countdownTime / 60);
+      var seconds = countdownTime % 60;
+      countdownDisplay.textContent = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+    }
+
+    function startCountdown() {
+      clearInterval(countdownInterval);
+      countdownInterval = setInterval(function() {
+        countdownTime--;
+        updateCountdownDisplay();
+        if (countdownTime <= 0) {
+          clearInterval(countdownInterval);
+          isWorkSession = !isWorkSession;
+            countdownTime = isWorkSession ? 25 * 60 : 5 * 60; // 25分作業、5分休憩
+          startCountdown();
+        }
+      }, 1000);
+    }
+
+    function resetCountdown() {
+      clearInterval(countdownInterval);
+      isWorkSession = true;
+      countdownTime = 5 * 60; // 5分 リセット時の時間
+      updateCountdownDisplay();
+    }
+
+    startCountdownButton.addEventListener('click', startCountdown);
+    resetCountdownButton.addEventListener('click', resetCountdown);
+
+    // 初期表示の更新
+    updateCountdownDisplay();
 
     // 雨のエフェクトを作成
     createRainEffect();

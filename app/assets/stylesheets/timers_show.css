@@ -159,3 +159,43 @@
 .voice-selection {
   display: none;
 }
+
+/* ポモドーロタイマーのスタイル */
+.countdown-timer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#countdown-display {
+  font-size: 48px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+#start-countdown,
+#reset-countdown {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3F95FF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+}
+
+#start-countdown:hover,
+#reset-countdown:hover {
+  background-color: #fc1010;
+}
+
+#start-countdown:active,
+#reset-countdown:active {
+  background-color: #3659e5;
+}
+/* ポモドーロタイマースタイルここまで */
+
