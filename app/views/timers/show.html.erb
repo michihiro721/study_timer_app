@@ -89,6 +89,43 @@
     var isTabActive = true;
     var selectedVoice = 'female';
 
+    // ローカルストレージから設定を読み込む関数
+    function loadSettings() {
+      var savedWorkDuration = localStorage.getItem('workDuration');
+      var savedBreakDuration = localStorage.getItem('breakDuration');
+      var savedVoice = localStorage.getItem('selectedVoice');
+      var savedCountdownTime = localStorage.getItem('countdownTime');
+      var savedIsWorkSession = localStorage.getItem('isWorkSession');
+
+      if (savedWorkDuration) {
+        workDurationInput.value = savedWorkDuration;
+      }
+      if (savedBreakDuration) {
+        breakDurationInput.value = savedBreakDuration;
+      }
+      if (savedVoice) {
+        selectedVoice = savedVoice;
+        document.querySelector(`input[name="voice"][value="${savedVoice}"]`).checked = true;
+        updateMessageVolumeIconColor();
+      }
+      if (savedCountdownTime) {
+        countdownTime = parseInt(savedCountdownTime, 10);
+        updateCountdownDisplay();
+      }
+      if (savedIsWorkSession) {
+        isWorkSession = savedIsWorkSession === 'true';
+      }
+    }
+
+    // 設定をローカルストレージに保存する関数
+    function saveSettings() {
+      localStorage.setItem('workDuration', workDurationInput.value);
+      localStorage.setItem('breakDuration', breakDurationInput.value);
+      localStorage.setItem('selectedVoice', selectedVoice);
+      localStorage.setItem('countdownTime', countdownTime);
+      localStorage.setItem('isWorkSession', isWorkSession);
+    }
+
     // 雨のエフェクトを追加する関数
     function createRainEffect() {
       var rainContainer = document.getElementById('rain-container');
@@ -242,6 +279,7 @@
       radio.addEventListener('change', function() {
         selectedVoice = this.value;
         updateMessageVolumeIconColor(); // アイコンの色を更新
+        saveSettings(); // 設定を保存
       });
     });
 
@@ -300,6 +338,7 @@
 
     function setPomodoro() {
       resetCountdown();
+      saveSettings(); // 設定を保存
       // 設定ボタンをクリックしたときに音声メッセージのボリューム調整アイコンを閉じる
       messageVolumeSlider.style.display = 'none';
       voiceSelection.style.display = 'none';
@@ -311,6 +350,9 @@
 
     // 初期表示の更新
     updateCountdownDisplay();
+
+    // 設定を読み込む
+    loadSettings();
 
     // タイマーを開始
     startCountdown();
