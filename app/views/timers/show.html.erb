@@ -18,9 +18,21 @@
 </div>
 
 <!-- 録音したメッセージの音声要素 -->
-<audio id="message1" src="<%= @message1 %>" preload="auto"></audio>
-<audio id="message2" src="<%= @message2 %>" preload="auto"></audio>
+<audio id="message1-female" src="<%= @message1_female %>" preload="auto"></audio>
+<audio id="message2-female" src="<%= @message2_female %>" preload="auto"></audio>
+<audio id="message1-male" src="<%= @message1_male %>" preload="auto"></audio>
+<audio id="message2-male" src="<%= @message2_male %>" preload="auto"></audio>
 <audio id="rain-sound" src="<%= @rain_sound %>" preload="auto" loop></audio>
+
+<!-- 音声メッセージの選択 -->
+<div class="message-selection">
+  <label>
+    <input type="radio" name="voice" value="female" checked> 女性の声
+  </label>
+  <label>
+    <input type="radio" name="voice" value="male"> 男性の声
+  </label>
+</div>
 
 <!-- 雨のエフェクトを表示するための要素 -->
 <div id="rain-container"></div>
@@ -41,8 +53,10 @@
   document.addEventListener('DOMContentLoaded', function() {
     var startTime = new Date();
     var elapsedTimeElement = document.getElementById('elapsed-time');
-    var message1 = document.getElementById('message1');
-    var message2 = document.getElementById('message2');
+    var message1Female = document.getElementById('message1-female');
+    var message2Female = document.getElementById('message2-female');
+    var message1Male = document.getElementById('message1-male');
+    var message2Male = document.getElementById('message2-male');
     var rainSound = document.getElementById('rain-sound');
     var volumeSlider = document.getElementById('volume-slider');
     var volumeIcon = document.getElementById('volume-icon');
@@ -51,6 +65,7 @@
     var isMessage1Playing = false;
     var lastElapsedTime = 0;
     var isTabActive = true;
+    var selectedVoice = 'female';
 
     // 雨のエフェクトを追加する関数
     function createRainEffect() {
@@ -79,10 +94,18 @@
 
       // メッセージの再生
       if (elapsedTime % 40 === 30 && !isMessage1Playing) {
-        message1.play();
+        if (selectedVoice === 'female') {
+          message1Female.play();
+        } else {
+          message1Male.play();
+        }
         isMessage1Playing = true;
       } else if (elapsedTime % 40 === 0 && isMessage1Playing) { // 30秒後にメッセージ1、次に10秒後にメッセージ2を再生
-        message2.play();
+        if (selectedVoice === 'female') {
+          message2Female.play();
+        } else {
+          message2Male.play();
+        }
         isMessage1Playing = false;
       }
 
@@ -156,14 +179,20 @@
 
     // 音声メッセージの音量を調整する関数
     messageVolumeSlider.addEventListener('input', function() {
-      message1.volume = messageVolumeSlider.value;
-      message2.volume = messageVolumeSlider.value;
+      if (selectedVoice === 'female') {
+        message1Female.volume = messageVolumeSlider.value;
+        message2Female.volume = messageVolumeSlider.value;
+      } else {
+        message1Male.volume = messageVolumeSlider.value;
+        message2Male.volume = messageVolumeSlider.value;
+      }
       updateMessageVolumeIcon();
     });
 
     // 音量に応じてアイコンを変更する関数
     function updateMessageVolumeIcon() {
-      if (message1.volume === 0 && message2.volume === 0) {
+      if ((selectedVoice === 'female' && message1Female.volume === 0 && message2Female.volume === 0) ||
+          (selectedVoice === 'male' && message1Male.volume === 0 && message2Male.volume === 0)) {
         messageVolumeIcon.className = 'fas fa-volume-mute'; // 消音アイコンに変更
       } else {
         messageVolumeIcon.className = 'fas fa-user'; // 元のアイコンに戻す
@@ -181,12 +210,19 @@
       }
     });
 
-    // タブが非アクティブなときでも音声メッセージを再生するための処理（神）
+    // タブが非アクティブなときでも音声メッセージを再生するための処理
     setInterval(function() {
       if (!isTabActive) {
         updateElapsedTime();
       }
     }, 1000);
+
+    // 音声メッセージの選択を変更する関数
+    document.querySelectorAll('input[name="voice"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        selectedVoice = this.value;
+      });
+    });
 
     // 雨のエフェクトを作成
     createRainEffect();

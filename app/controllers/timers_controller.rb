@@ -28,8 +28,10 @@ class TimersController < ApplicationController
   # 学習ページを表示するアクション
   def study
     @timer = Timer.order(created_at: :desc).first
-    @message1 = ActionController::Base.helpers.asset_path('message1.mp3')
-    @message2 = ActionController::Base.helpers.asset_path('message2.mp3')
+    @message1_female = ActionController::Base.helpers.asset_path('message1_female.mp3')
+    @message2_female = ActionController::Base.helpers.asset_path('message2_female.mp3')
+    @message1_male = ActionController::Base.helpers.asset_path('message1_male.mp3')
+    @message2_male = ActionController::Base.helpers.asset_path('message2_male.mp3')
     @rain_sound = ActionController::Base.helpers.asset_path('rain-sound.mp3')
     render :show
   end
