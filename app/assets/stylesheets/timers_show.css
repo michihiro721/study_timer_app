@@ -197,5 +197,50 @@
 #reset-countdown:active {
   background-color: #3659e5;
 }
-/* ポモドーロタイマースタイルここまで */
 
+/* ポモドーロタイマーの設定 */
+.pomodoro-settings {
+  position: fixed;
+  top: 130px; /* 音声メッセージのボリューム設定のアイコンの下に配置 */
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 1000; /* 他の要素の前面に表示 */
+}
+
+.pomodoro-settings label {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 5px;
+  font-size: 30px; /* フォントサイズを調整 */
+}
+
+.pomodoro-settings input {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.pomodoro-settings button {
+  display: block; /* ブロック要素に変更して下に配置 */
+  margin: 10px auto 0; /* 上方向の余白を追加し、中央に配置 */
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3F95FF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.pomodoro-settings button:hover {
+  background-color: #fc1010;
+}
+
+.pomodoro-settings button:active {
+  background-color: #3659e5;
+}

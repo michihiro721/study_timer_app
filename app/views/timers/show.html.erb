@@ -51,6 +51,15 @@
   <input type="range" id="message-volume-slider" min="0" max="1" step="0.01" value="0.5" style="display: none;">
 </div>
 
+<!-- ポモドーロタイマーの設定 -->
+<div class="pomodoro-settings">
+  <label for="work-duration">学習時間 (分):</label>
+  <input type="number" id="work-duration" value="25" min="1">
+  <label for="break-duration">休憩時間 (分):</label>
+  <input type="number" id="break-duration" value="5" min="1">
+  <button id="set-pomodoro">設定</button>
+</div>
+
 <!-- 音声メッセージの選択 -->
 <div class="voice-selection">
   <label class="voice-female">
@@ -256,6 +265,9 @@
     var countdownDisplay = document.getElementById('countdown-display');
     var startCountdownButton = document.getElementById('start-countdown');
     var resetCountdownButton = document.getElementById('reset-countdown');
+    var setPomodoroButton = document.getElementById('set-pomodoro');
+    var workDurationInput = document.getElementById('work-duration');
+    var breakDurationInput = document.getElementById('break-duration');
     var countdownInterval;
     var isWorkSession = true;
     var countdownTime = 25 * 60; // 25分 開始の時間
@@ -274,7 +286,7 @@
         if (countdownTime <= 0) {
           clearInterval(countdownInterval);
           isWorkSession = !isWorkSession;
-            countdownTime = isWorkSession ? 25 * 60 : 5 * 60; // 25分作業、5分休憩
+          countdownTime = isWorkSession ? workDurationInput.value * 60 : breakDurationInput.value * 60; // 学習時間と休憩時間を設定
           startCountdown();
         }
       }, 1000);
@@ -283,12 +295,17 @@
     function resetCountdown() {
       clearInterval(countdownInterval);
       isWorkSession = true;
-      countdownTime = 25 * 60; // 25分 リセット時の時間
+      countdownTime = workDurationInput.value * 60; // 学習時間をリセット時の時間に設定
       updateCountdownDisplay();
+    }
+
+    function setPomodoro() {
+      resetCountdown();
     }
 
     startCountdownButton.addEventListener('click', startCountdown);
     resetCountdownButton.addEventListener('click', resetCountdown);
+    setPomodoroButton.addEventListener('click', setPomodoro);
 
     // 初期表示の更新
     updateCountdownDisplay();
