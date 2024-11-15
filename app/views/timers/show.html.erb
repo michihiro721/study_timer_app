@@ -24,7 +24,6 @@
     <span id="countdown-display">25:00</span>
   </div>
   <div>
-    <button id="start-countdown">開始</button>
     <button id="reset-countdown">リセット</button>
   </div>
 </div>
@@ -53,9 +52,9 @@
 
 <!-- ポモドーロタイマーの設定 -->
 <div class="pomodoro-settings">
-  <label for="work-duration">学習時間 (分):</label>
+  <label for="work-duration">学習時間 (分)</label>
   <input type="number" id="work-duration" value="25" min="1">
-  <label for="break-duration">休憩時間 (分):</label>
+  <label for="break-duration">休憩時間 (分)</label>
   <input type="number" id="break-duration" value="5" min="1">
   <button id="set-pomodoro">設定</button>
 </div>
@@ -248,7 +247,6 @@
 
     // ポモドーロタイマーの設定
     var countdownDisplay = document.getElementById('countdown-display');
-    var startCountdownButton = document.getElementById('start-countdown');
     var resetCountdownButton = document.getElementById('reset-countdown');
     var setPomodoroButton = document.getElementById('set-pomodoro');
     var workDurationInput = document.getElementById('work-duration');
@@ -297,18 +295,21 @@
       isWorkSession = true;
       countdownTime = workDurationInput.value * 60; // 学習時間をリセット時の時間に設定
       updateCountdownDisplay();
+      startCountdown(); // リセット後にカウントダウンを再開
     }
 
     function setPomodoro() {
       resetCountdown();
     }
 
-    startCountdownButton.addEventListener('click', startCountdown);
     resetCountdownButton.addEventListener('click', resetCountdown);
     setPomodoroButton.addEventListener('click', setPomodoro);
 
     // 初期表示の更新
     updateCountdownDisplay();
+
+    // タイマーを開始
+    startCountdown();
 
     // 雨のエフェクトを作成
     createRainEffect();
