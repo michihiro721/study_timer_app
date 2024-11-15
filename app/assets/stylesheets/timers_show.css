@@ -123,3 +123,30 @@
   display: none; /* 初期状態で非表示 */
 }
 
+/* 音声メッセージの選択ラベルのスタイル「女性」 */
+.voice-female {
+  display: block;
+  margin-top: 10px; /* 上方向の余白を追加 */
+  font-size: 20px; /* フォントサイズを調整 */
+  color: #f83798; /* テキストの色をピンクに設定 */
+  padding: 5px 10px; /* 内側の余白を追加 */
+  border-radius: 0px; /* 角を丸くする */
+  position: fixed;
+  top: 60px; /* 画面右上ちょい下に配置 */
+  right: 10px;
+  background: rgba(255, 255, 255, 0.5); /* 半透明の白色背景 */
+}
+
+/* 音声メッセージの選択ラベルのスタイル「男性」 */
+.voice-male {
+  display: block;
+  margin-top: 10px; /* 上方向の余白を追加 */
+  font-size: 20px; /* フォントサイズを調整 */
+  color: #0024a6; /* テキストの色を薄い青に設定 */
+  padding: 5px 10px; /* 内側の余白を追加 */
+  border-radius: 0px; /* 角を丸くする */
+  position: fixed;
+  top: 100px; /* 画面右上ちょい下に配置 */
+  right: 10px;
+  background: rgba(255, 255, 255, 0.5); /* 半透明の白色背景 */
+}

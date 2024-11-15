@@ -24,16 +24,6 @@
 <audio id="message2-male" src="<%= @message2_male %>" preload="auto"></audio>
 <audio id="rain-sound" src="<%= @rain_sound %>" preload="auto" loop></audio>
 
-<!-- 音声メッセージの選択 -->
-<div class="message-selection">
-  <label>
-    <input type="radio" name="voice" value="female" checked> 女性の声
-  </label>
-  <label>
-    <input type="radio" name="voice" value="male"> 男性の声
-  </label>
-</div>
-
 <!-- 雨のエフェクトを表示するための要素 -->
 <div id="rain-container"></div>
 
@@ -47,6 +37,16 @@
 <div class="message-volume-control message-volume-control-adjusted">
   <i id="message-volume-icon" class="fas fa-user"></i>
   <input type="range" id="message-volume-slider" min="0" max="1" step="0.01" value="0.5" style="display: none;">
+</div>
+
+<!-- 音声メッセージの選択 -->
+<div class="message-selection">
+  <label class="voice-female">
+    <input type="radio" name="voice" value="female" checked> 女性の声
+  </label>
+  <label class="voice-male">
+    <input type="radio" name="voice" value="male"> 男性の声
+  </label>
 </div>
 
 <script>
