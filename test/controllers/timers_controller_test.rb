@@ -2,17 +2,18 @@ require "test_helper"
 
 class TimersControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get timers_new_url
+    get new_timer_url
     assert_response :success
   end
 
-  test "should get create" do
-    get timers_create_url
-    assert_response :success
+  test "should create timer" do
+    post timers_url, params: { timer: { name: "Study Timer", duration: 60 } }
+    assert_response :redirect
   end
 
-  test "should get show" do
-    get timers_show_url
+  test "should show timer" do
+    timer = timers(:one) # 適切なfixtureを使用
+    get timer_url(timer)
     assert_response :success
   end
 end
