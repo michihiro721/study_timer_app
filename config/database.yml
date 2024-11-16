@@ -8,7 +8,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  url: <%= ENV['DATABASE_URL'] %>
+  username: michihiro721
+  password: Mskazu
+  host: localhost
 
 development:
   <<: *default
@@ -24,3 +26,6 @@ test:
 production:
   <<: *default
   database: study_timer_app_production
+  username: michihiro721
+  password: Mskazu
+  host: localhost
