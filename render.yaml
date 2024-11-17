@@ -6,4 +6,5 @@ services:
     startCommand: bundle exec rails server -b 0.0.0.0
     envVars:
       - key: DATABASE_URL
-        value: postgres://study_timer_app_production_user:CJHlCYAU98TWt1LhqsWxCT4SQzOlY9y0@dpg-css626t2ng1s73aghc90-a/study_timer_app_production
+        value: postgres://db_study_timer_app_production_user:<password>@dpg-cssldgggph6c7396ue70-a:5432/db_study_timer_app_production
+    postDeploy: bundle exec rails db:migrate
