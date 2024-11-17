@@ -15,3 +15,6 @@ test:
 production:
   <<: *default
   database: study_timer_app_production
+  adapter: postgresql
+  encoding: unicode
+  url: <%= ENV['DATABASE_URL'] %>
