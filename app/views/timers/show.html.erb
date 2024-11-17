@@ -29,11 +29,11 @@
 </div>
 
 <!-- 録音したメッセージの音声要素 -->
-<audio id="message1-female" src="<%= @message1_female %>" preload="auto"></audio>
-<audio id="message2-female" src="<%= @message2_female %>" preload="auto"></audio>
-<audio id="message1-male" src="<%= @message1_male %>" preload="auto"></audio>
-<audio id="message2-male" src="<%= @message2_male %>" preload="auto"></audio>
-<audio id="rain-sound" src="<%= @rain_sound %>" preload="auto" loop></audio>
+<audio id="message1-female" src="<%= asset_path('message1_female.mp3') %>" preload="auto"></audio>
+<audio id="message2-female" src="<%= asset_path('message2_female.mp3') %>" preload="auto"></audio>
+<audio id="message1-male" src="<%= asset_path('message1_male.mp3') %>" preload="auto"></audio>
+<audio id="message2-male" src="<%= asset_path('message2_male.mp3') %>" preload="auto"></audio>
+<audio id="rain-sound" src="<%= asset_path('rain-sound.mp3') %>" preload="auto" loop></audio>
 
 <!-- 雨のエフェクトを表示するための要素 -->
 <div id="rain-container"></div>
