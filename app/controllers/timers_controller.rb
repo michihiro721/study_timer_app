@@ -14,7 +14,7 @@ class TimersController < ApplicationController
   def create
     @timer = Timer.create(start_time: Time.current)
     if @timer.save
-      redirect_to study_timers_path
+      redirect_to study_path
     else
       render :new
     end
@@ -33,7 +33,6 @@ class TimersController < ApplicationController
     @message1_male = ActionController::Base.helpers.asset_path('message1_male.mp3')
     @message2_male = ActionController::Base.helpers.asset_path('message2_male.mp3')
     @rain_sound = ActionController::Base.helpers.asset_path('rain-sound.mp3')
-    render :show
   end
 
   # タイマーを開始するアクション
@@ -53,25 +52,25 @@ class TimersController < ApplicationController
     # 累計学習時間を更新
     session[:total_duration] = (session[:total_duration] || 0) + (@timer.end_time - @timer.start_time)
     session[:independent_total_duration] = (session[:independent_total_duration] || 0) + (@timer.end_time - @timer.start_time)
-    redirect_to new_timer_path
+    redirect_to root_path
   end
 
   # 累計学習時間をリセットするアクション
   def reset_total_duration
     Timer.delete_all
     session[:total_duration] = 0
-    redirect_to new_timer_path, notice: '累計学習時間がリセットされました。'
+    redirect_to root_path, notice: '累計学習時間がリセットされました。'
   end
 
   # スタンプ数をリセットするアクション
   def reset_stamps
     session[:total_duration] = 0
-    redirect_to new_timer_path, notice: 'スタンプ数がリセットされました。'
+    redirect_to root_path, notice: 'スタンプ数がリセットされました。'
   end
 
   # 独立した累計学習時間をリセットするアクション
   def reset_independent_total_duration
     session[:independent_total_duration] = 0
-    redirect_to new_timer_path, notice: '独立した累計学習時間がリセットされました。'
+    redirect_to root_path, notice: '独立した累計学習時間がリセットされました。'
   end
 end
