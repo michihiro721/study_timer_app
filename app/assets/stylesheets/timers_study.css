@@ -1,0 +1,252 @@
+/* 学習タイマーのスタイル */
+.study-content {
+  text-align: center;
+  margin: 20px auto;
+  width: 80%; /* 必要に応じて幅を調整 */
+}
+
+.study-content h1,
+.study-content p,
+.study-content form {
+  display: block;
+  margin-bottom: 10px; /* 各要素の間に余白を追加 */
+}
+
+.studying {
+  font-size: 40px; /* フォントサイズを大きくしました */
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000;
+  border-radius: 8px; /* 角を丸くする */
+  margin: 0 auto; /* 文字の位置をセンターに */
+  text-align: center; /* テキストをセンターに */
+}
+
+.elapsed-time {
+  font-size: 100px;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px #000000;
+  display: inline-block;
+  margin-top: 1px; /* 上方向の余白を小さくする */
+}
+
+/* 学習終了ボタンのスタイル */
+.stop-timer-button {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #fc1010;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.stop-timer-button {
+  background-color: #3F95FF; /* ホバーされる前は青色 */
+}
+
+.stop-timer-button:hover {
+  background-color: #ff0000; /* ホバーされたら赤色 */
+  transform: scale(1.05);
+}
+
+.stop-timer-button:active {
+  background-color: #cc0000;
+  transform: scale(0.95);
+}
+
+/* 雨のエフェクトのスタイル */
+#rain-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* クリックイベントを無視 */
+  z-index: -1; /* 他の要素の背面に表示 */
+}
+
+/* 雨の滴のスタイル */
+.rain-drop {
+  position: absolute; /* 絶対位置 */
+  top: -10px; /* 初期位置を上に設定 */
+  width: 2px; /* 幅を2pxに設定 */
+  height: 10px; /* 高さを10pxに設定 */
+  background: rgba(255, 255, 255, 0.6); /* 半透明の白色 */
+  animation: fall linear infinite; /* 無限に落ちるアニメーション */
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* 音量調節用のスライダーのスタイル */
+.volume-control,
+.message-volume-control {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 1000; /* 他の要素の前面に表示 */
+  cursor: pointer; /* カーソルをポインタに変更 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-volume-control-adjusted {
+  top: 70px; /* 位置を少し下にずらす */
+}
+
+.volume-control i {
+  color: #00ccff; /* 雨に似合う青色 */
+  font-size: 30px;
+}
+
+.message-volume-control i {
+  color: #ff69b4; /* ピンク色 */
+  font-size: 30px;
+}
+
+.message-volume-control-adjusted {
+  top: 70px; /* 位置を少し上にずらす */
+}
+
+#volume-slider,
+#message-volume-slider {
+  width: 150px;
+  display: none; /* 初期状態で非表示 */
+}
+
+/* 音声メッセージの選択ラベルのスタイル「女性」 */
+.voice-female {
+  display: block;
+  margin-top: 10px; /* 上方向の余白を追加 */
+  font-size: 36.5px; /* フォントサイズを調整 */
+  color: #f83798; /* テキストの色をピンクに設定 */
+  padding: 5px 10px; /* 内側の余白を追加 */
+  border-radius: 0px; /* 角を丸くする */
+  position: fixed;
+  top: 110px; /* 画面右上ちょい下に配置 */
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5); /* 半透明の白色背景 */
+}
+
+/* 音声メッセージの選択ラベルのスタイル「男性」 */
+.voice-male {
+  display: block;
+  margin-top: 10px; /* 上方向の余白を追加 */
+  font-size: 36.5px; /* フォントサイズを調整 */
+  color: #00ccff; /* テキストの色を薄い青に設定 */
+  padding: 5px 10px; /* 内側の余白を追加 */
+  border-radius: 0px; /* 角を丸くする */
+  position: fixed;
+  top: 175px; /* 画面右上ちょい下に配置 */
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5); /* 半透明の白色背景 */
+}
+
+/* 音声メッセージの選択肢の初期状態を非表示に設定 */
+.voice-selection {
+  display: none;
+}
+
+/* ポモドーロタイマーのスタイル */
+.countdown-timer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#countdown-display {
+  font-size: 130px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000;
+  font-weight: bold;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#start-countdown,
+#reset-countdown {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3F95FF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+}
+
+#start-countdown:hover,
+#reset-countdown:hover {
+  background-color: #fc1010;
+}
+
+#start-countdown:active,
+#reset-countdown:active {
+  background-color: #3659e5;
+}
+
+/* ポモドーロタイマーの設定 */
+.pomodoro-settings {
+  position: fixed;
+  top: 250px; /* 音声メッセージのボリューム設定のアイコンの下に配置 */
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+  padding: 10px;
+  border-radius: 0px;
+  text-align: center;
+  z-index: 1000; /* 他の要素の前面に表示 */
+  display: none; /* 初期状態で非表示 */
+}
+
+.pomodoro-settings label {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 5px;
+  font-size: 29.5px; /* フォントサイズを調整 */
+}
+
+.pomodoro-settings input {
+  width: 80px; /* 幅を広くする */
+  margin-bottom: 10px;
+  font-size: 30px; /* フォントサイズを調整 */
+  text-align: center; /* テキストをセンターに */
+}
+
+.pomodoro-settings button {
+  display: block; /* ブロック要素に変更して下に配置 */
+  margin: 10px auto 0; /* 上方向の余白を追加し、中央に配置 */
+  padding: 5px 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3F95FF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.pomodoro-settings button:hover {
+  background-color: #fc1010;
+}
+
+.pomodoro-settings button:active {
+  background-color: #3659e5;
+}
